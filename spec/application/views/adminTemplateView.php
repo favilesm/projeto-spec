@@ -38,7 +38,7 @@ a:hover
         <a href='<?php echo site_url('administrador/noticia')?>'>Notícias</a> |
         <a href='<?php echo site_url('administrador/blog')?>'>Blog</a> |
         <a href='<?php echo site_url('administrador/prefeitura')?>'>Prefeitura</a> |
-        <a href='<?php echo site_url('administrador/secretario')?>'>secretario</a>
+        <a href='<?php echo site_url('administrador/secretario')?>'>Secretário</a>
 
     </div>
     <div>
