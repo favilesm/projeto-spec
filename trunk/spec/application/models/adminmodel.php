@@ -11,7 +11,10 @@ class AdminModel extends CI_Model {
         $crud = new grocery_CRUD();
         $crud->set_table('dica');
         $crud->set_subject('Dica');
-        $crud->columns('dica_id','texto_dica','titulo_dica');
+        $crud->columns('titulo_dica','texto_dica');
+        $crud->required_fields('titulo_dica','texto_dica');
+        $crud->display_as('titulo_dica','Título');
+        $crud->display_as('texto_dica','Texto');
 
         $output = $crud->render();
         return($output);
@@ -29,8 +32,8 @@ class AdminModel extends CI_Model {
         $crud = new grocery_CRUD();
         $crud->set_table('administrador');
         $crud->set_subject('Administrador');
-        $crud->columns('administrador_id','login','senha');
-        
+        $crud->columns('login','senha');
+        $crud->required_fields('login', 'senha');
        
         if ($id == 1)
         {
@@ -52,11 +55,9 @@ class AdminModel extends CI_Model {
         $crud->set_table('blog');
         $crud->set_subject('Blog');
         $crud->required_fields('titulo_blog','texto_blog');
-        $crud->columns('blog_id','titulo_blog','texto_blog');
-        $crud->unset_add_fields('blog_id');
-        $crud->unset_edit_fields('blog_id');
-        $crud->display_as('blog_id','ID')
-             ->display_as('titulo_blog','Título')
+        $crud->columns('titulo_blog','texto_blog');
+         $crud->unset_add_fields('blog_id');
+        $crud->display_as('titulo_blog','Título')
              ->display_as('texto_blog','Texto');
 
         $output = $crud->render();
@@ -70,7 +71,10 @@ class AdminModel extends CI_Model {
 
         $crud->set_table('prefeitura');
         $crud->set_subject('Prefeitura');
-
+         $crud->add_action('Ativar', 'ui-icon-plus','administrador/prefeitura/ativar');
+         $crud->add_action('Secretarios', 'ui-icon-plus','administrador/secretario/add');
+        $crud->unset_add_fields('quantidade_secretario','ativada');
+        $crud->unset_edit_fields('quantidade_secretario','ativada');
         $output = $crud->render();
         return($output);
     }
@@ -96,11 +100,10 @@ class AdminModel extends CI_Model {
         $crud->set_table('noticia');
         $crud->set_subject('Noticia');
         $crud->required_fields('titulo_noticia','texto_noticia');
-        $crud->columns('noticia_id','titulo_noticia','texto_noticia','prefeituras');
+        $crud->columns('titulo_noticia','texto_noticia','prefeituras');
         $crud->unset_add_fields('noticia_id');
         $crud->unset_edit_fields('noticia_id');
-        $crud->display_as('noticia_id','ID')
-             ->display_as('titulo_noticia','Título')
+        $crud->display_as('titulo_noticia','Título')
              ->display_as('texto_noticia','Texto');
         $crud->set_relation_n_n('prefeituras', 'prefeitura_x_noticia', 'prefeitura', 'noticia_noticia_id', 'prefeitura_prefeitura_id', 'nome_prefeitura');
 
