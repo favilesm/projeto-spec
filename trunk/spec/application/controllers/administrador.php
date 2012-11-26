@@ -36,8 +36,16 @@ class Administrador extends CI_Controller {
         $this->_chamaTemplate($output);
     }
     
+    function programa()
+    {
+        $this->load->model('adminModel');
+        $output = $this->adminModel->crudPrograma();
+        $this->_chamaTemplate($output);
+    }
+    
     function noticia()
     {
+        
         $this->load->model('adminModel');
         $output = $this->adminModel->crudNoticia();
         $this->_chamaTemplate($output);
@@ -63,6 +71,22 @@ class Administrador extends CI_Controller {
         $this->load->model('adminModel');
         $output = $this->adminModel->crudSecretario();
         
+        $this->_chamaTemplate($output); 
+
+    }
+    
+    function prefeito()
+    {       
+        $this->load->model('adminModel');
+        $output = $this->adminModel->crudPrefeito();
+        $this->_chamaTemplate($output); 
+
+    }
+    
+    function mensagem()
+    {       
+        $this->load->model('adminModel');
+        $output = $this->adminModel->crudMensagem();
         $this->_chamaTemplate($output); 
 
     }

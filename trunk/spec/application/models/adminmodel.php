@@ -56,8 +56,10 @@ class AdminModel extends CI_Model {
         $crud->set_subject('Blog');
         $crud->required_fields('titulo_blog','texto_blog');
         $crud->columns('titulo_blog','texto_blog');
-         $crud->unset_add_fields('blog_id');
-        $crud->display_as('titulo_blog','Título')
+        $crud->unset_add_fields('blog_id');
+        $crud->unset_edit_fields('blog_id');
+        $crud->display_as('blog_id','ID')
+             ->display_as('titulo_blog','Título')
              ->display_as('texto_blog','Texto');
 
         $output = $crud->render();
@@ -75,6 +77,15 @@ class AdminModel extends CI_Model {
          $crud->add_action('Secretarios', 'ui-icon-plus','administrador/secretario/add');
         $crud->unset_add_fields('quantidade_secretario','ativada');
         $crud->unset_edit_fields('quantidade_secretario','ativada');
+         $crud->display_as('uf','UF')
+             ->display_as('municipio','Município')
+             ->display_as('endereco','Endereço')
+             ->display_as('cnpj','CNPJ')    
+             ->display_as('email_prefeitura','Email da prefeitura')        
+             ->display_as('num_habitantes','Número de habitantes')                         
+             ->display_as('nome_prefeito','Nome do prefeito');
+        
+        
         $output = $crud->render();
         return($output);
     }
@@ -84,11 +95,37 @@ class AdminModel extends CI_Model {
         $crud = new grocery_CRUD();
 
         $crud->set_table('secretario');
-        $crud->set_subject('secretario');
+        $crud->set_subject('Secretario');
         $crud->required_fields('prefeitura_prefeitura_id');
         
         $crud->callback_before_insert(array($this,'checandoIdPrefeitura'));
         
+        $output = $crud->render();
+        return($output);
+    }
+    
+    function crudPrefeito()
+    {
+        $crud = new grocery_CRUD();
+
+        $crud->set_table('prefeito');
+        $crud->set_subject('Prefeito');
+        
+        $crud->required_fields('prefeitura_prefeitura_id');
+        
+        $crud->display_as('nome_prefeito','Nome do prefeito')
+             ->display_as('data_nascimento','Data de nascimento')
+             ->display_as('email_prefeito','Email do prefeito')
+                ->display_as('prefeitura_prefeitura_id','Município do prefeito')
+        ->display_as('cpf','CPF');
+        
+        $crud->unset_add_fields('prefeito_id');
+        $crud->unset_edit_fields('prefeito_id');
+        
+        $crud->callback_before_insert(array($this,'checandoIdPrefeitura'));
+        
+        $crud->set_relation('prefeitura_prefeitura_id','prefeitura','municipio');
+
         $output = $crud->render();
         return($output);
     }
@@ -100,18 +137,54 @@ class AdminModel extends CI_Model {
         $crud->set_table('noticia');
         $crud->set_subject('Noticia');
         $crud->required_fields('titulo_noticia','texto_noticia');
-        $crud->columns('titulo_noticia','texto_noticia','prefeituras');
+        $crud->columns('titulo_noticia','texto_noticia','prefeituras', 'file_url');
+        $crud->set_relation_n_n('prefeituras', 'prefeitura_x_noticia', 'prefeitura', 'noticia_noticia_id', 'prefeitura_prefeitura_id', 'nome_prefeitura');
         $crud->unset_add_fields('noticia_id');
         $crud->unset_edit_fields('noticia_id');
         $crud->display_as('titulo_noticia','Título')
              ->display_as('texto_noticia','Texto');
-        $crud->set_relation_n_n('prefeituras', 'prefeitura_x_noticia', 'prefeitura', 'noticia_noticia_id', 'prefeitura_prefeitura_id', 'nome_prefeitura');
-
+        
+        $crud->set_field_upload('file_url','assets/uploads/files');
+        
         $output = $crud->render();
         return($output);
     }    
     
+    function crudPrograma()
+    {
+        $crud = new grocery_CRUD();
+        $crud->set_table('programa');
+        $crud->set_subject('Programa');
+        $crud->columns('titulo_programa','texto_programa');
+        $crud->unset_add_fields('programa_id');
+        $crud->unset_edit_fields('programa_id');
+        $crud->required_fields('titulo_programa','texto_programa');
+        $crud->display_as('titulo_programa','Título');
+        $crud->display_as('texto_programa','Texto');
 
+        $output = $crud->render();
+        return($output);
+    }
+    
+    function crudMensagem()
+    {
+        $crud = new grocery_CRUD();
+        $crud->set_table('mensagem');
+        $crud->set_subject('Mensagem');
+        $crud->columns('titulo_mensagem','texto_mensagem');
+        $crud->required_fields('titulo_mensagem','texto_mensagem');
+        $crud->display_as('titulo_mensagem','Título');
+        $crud->display_as('texto_mensagem','Texto');
+        
+        $crud->unset_add_fields('mensagem_id', 'prefeitura_prefeitura_id', 'administrador_administrador_id');
+        $crud->unset_edit_fields('mensagem_id', 'prefeitura_prefeitura_id','administrador_administrador_id');
+        
+        
+
+        $output = $crud->render();
+        return($output);
+    }
+    
     function checaQtd($id)
     {
         //seleciona a quantidadede prefeitura 
