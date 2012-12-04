@@ -43,6 +43,7 @@ class AdminModel extends CI_Model {
         }
 
         $crud->callback_before_insert(array($this,'encriptasenha'));
+        $crud->callback_before_update(array($this,'encriptasenha'));
 
         $output = $crud->render();
         return($output);
@@ -171,10 +172,12 @@ class AdminModel extends CI_Model {
         $crud = new grocery_CRUD();
         $crud->set_table('mensagem');
         $crud->set_subject('Mensagem');
-        $crud->columns('titulo_mensagem','texto_mensagem');
-        $crud->required_fields('titulo_mensagem','texto_mensagem');
+        $crud->columns('mensagem_id', 'titulo_mensagem','texto_mensagem', 'prefeitura_prefeitura_id', 'administrador_administrador_id');
+        $crud->required_fields('mensagem_id','titulo_mensagem','texto_mensagem','prefeitura_prefeitura_id', 'administrador_administrador_id');
         $crud->display_as('titulo_mensagem','Título');
         $crud->display_as('texto_mensagem','Texto');
+        $crud->display_as('prefeitura_prefeitura_id','Destinatário');
+        $crud->set_relation('prefeitura_prefeitura_id','prefeitura','nome_prefeitura');
         
         $crud->unset_add_fields('mensagem_id', 'prefeitura_prefeitura_id', 'administrador_administrador_id');
         $crud->unset_edit_fields('mensagem_id', 'prefeitura_prefeitura_id','administrador_administrador_id');
