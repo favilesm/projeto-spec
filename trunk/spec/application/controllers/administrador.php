@@ -86,7 +86,7 @@ class Administrador extends CI_Controller {
     function mensagem()
     {       
         $this->load->model('adminModel');
-        $output = $this->adminModel->crudMensagem();
+        $output = $this->adminModel->crudMensagem($this->verificaAdmin());
         $this->_chamaTemplate($output); 
 
     }

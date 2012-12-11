@@ -10,7 +10,7 @@ class UsuarioModel extends CI_Model {
         $query = $this->db->get('prefeitura');
         if($query->num_rows == 1)
         {
-            return true;
+            return $query->row();
         }
         
     }
@@ -23,7 +23,7 @@ class UsuarioModel extends CI_Model {
         $query = $this->db->get('administrador');
         if($query->num_rows == 1)
         {
-            return true;
+            return $query->row();
         }   
     }
     

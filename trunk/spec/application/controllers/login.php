@@ -21,12 +21,11 @@ class Login extends CI_Controller{
         $this->load->model('usuariomodel');
         $senha = $this->input->post('senha');
         $login = $this->input->post('login');
-        $query = $this->usuariomodel->validar($senha, $login);
-        $query2 = $this->usuariomodel->validarAdmin($senha, $login);
         
-        if($query) //Se valido
+        if($query = $this->usuariomodel->validar($senha, $login)) //Se valido
         {
             $data = array (
+                'id' => $query->prefeitura_id,
                 'login' => $this->input->post('login'),
                 'logado' => true
             );
@@ -36,9 +35,10 @@ class Login extends CI_Controller{
             $this->verificaUsuario();
         }
         
-        elseif ($query2) 
+        elseif ($query = $this->usuariomodel->validarAdmin($senha, $login)) 
         {         
             $data = array (
+                'id' => $query->administrador_id,
                 'login' => $this->input->post('login'),
                 'inserio' => false,
                 'logado' => true
