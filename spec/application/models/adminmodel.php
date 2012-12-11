@@ -273,7 +273,13 @@ class AdminModel extends CI_Model {
    
          */  }
      
-    
+    function ativarPrefeitura($id){
+        $ativada = 1;
+        $this->db->from('prefeitura');
+        $this->db->where('prefeitura_id', $id);
+        $this->db->set('ativada',$ativada);
+        $this->db->update('prefeitura');
+    }
     
     function checandoIdPrefeitura($post_array)
     {

@@ -84,14 +84,21 @@ class Administrador extends CI_Controller {
 
     }
     
-    
+    function ativar($id)
+    {
+        $this->load->model('adminModel');
+        $output = $this->adminModel->ativarPrefeitura($id);
+         redirect('/administrador/prefeitura');
+        //$this->_chamaTemplate($output); 
+        
+    }
     
     function prefeito()
     {       
         $this->load->model('adminModel');
         $output = $this->adminModel->crudPrefeito();
         $this->_chamaTemplate($output); 
-
+        
     }
     
     function mensagem()
