@@ -66,10 +66,10 @@ class Administrador extends CI_Controller {
         $this->_chamaTemplate($output);
     }
     
-    function secretario()
+    function secretario($id)
     {       
         $this->load->model('adminModel');
-        $output = $this->adminModel->crudSecretario();
+        $output = $this->adminModel->crudSecretario($id);
         
         $this->_chamaTemplate($output); 
 
