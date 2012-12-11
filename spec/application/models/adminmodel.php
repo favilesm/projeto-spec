@@ -167,25 +167,37 @@ class AdminModel extends CI_Model {
         return($output);
     }
     
-    function crudMensagem()
+    function crudMensagem($admin)
     {
         $crud = new grocery_CRUD();
+        
         $crud->set_table('mensagem');
         $crud->set_subject('Mensagem');
-        $crud->columns('mensagem_id', 'titulo_mensagem','texto_mensagem', 'prefeitura_prefeitura_id', 'administrador_administrador_id');
-        $crud->required_fields('mensagem_id','titulo_mensagem','texto_mensagem','prefeitura_prefeitura_id', 'administrador_administrador_id');
+        $crud->set_relation('prefeitura_prefeitura_id','prefeitura','nome_prefeitura');
+        $crud->set_relation('administrador_administrador_id','administrador','login');
+        $crud->fields('titulo_mensagem', 'texto_mensagem', 'prefeitura_prefeitura_id');
+        $crud->required_fields('titulo_mensagem','texto_mensagem','prefeitura_prefeitura_id');
         $crud->display_as('titulo_mensagem','Título');
         $crud->display_as('texto_mensagem','Texto');
         $crud->display_as('prefeitura_prefeitura_id','Destinatário');
-        $crud->set_relation('prefeitura_prefeitura_id','prefeitura','nome_prefeitura');
+        $crud->display_as('administrador_administrador_id','Remetente');
         
-        $crud->unset_add_fields('mensagem_id', 'prefeitura_prefeitura_id', 'administrador_administrador_id');
-        $crud->unset_edit_fields('mensagem_id', 'prefeitura_prefeitura_id','administrador_administrador_id');
+        // impede administradores normais de ver a coluna de quem enviou a mensagem
+        if ($this->session->userdata('id') != 0) {
+            $crud->where('administrador_administrador_id', $this->session->userdata('id'));
+            $crud->columns('titulo_mensagem', 'texto_mensagem', 'prefeitura_prefeitura_id');
+        }
         
+        $crud->callback_insert(array($this, 'crudMensagemInsert'));
         
-
         $output = $crud->render();
         return($output);
+    }
+    
+    function crudMensagemInsert($post_array)
+    {
+        $post_array['administrador_administrador_id'] = $this->session->userdata('id');
+        return $this->db->insert('mensagem', $post_array);
     }
     
     function checaQtd($id)
