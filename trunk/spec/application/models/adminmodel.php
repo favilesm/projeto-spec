@@ -167,7 +167,7 @@ class AdminModel extends CI_Model {
         return($output);
     }
     
-    function crudMensagem($admin)
+    function crudMensagem()
     {
         $crud = new grocery_CRUD();
         
