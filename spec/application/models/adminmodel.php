@@ -74,7 +74,7 @@ class AdminModel extends CI_Model {
  
         $crud->set_table('prefeitura');
         $crud->set_subject('Prefeitura');
-        $crud->add_action('Ativar', 'ui-icon-plus','administrador/prefeitura');
+        $crud->add_action('Ativar', 'ui-icon-plus','administrador/ativar');
         $crud->add_action('Secretarios', 'ui-icon-plus','administrador/secretario');
         $crud->add_action('Telefone', 'ui-icon-plus','administrador/telefone');
         $crud->unset_add_fields('quantidade_secretario','ativada');
@@ -92,16 +92,18 @@ class AdminModel extends CI_Model {
         return($output);
     }
 
-    function crudSecretario()
+    function crudSecretario($id)
     {
         $crud = new grocery_CRUD();
 
         $crud->set_table('secretario');
         $crud->set_subject('Secretario');
         $crud->columns('nome_secretario', 'email_secretario', 'funcao');
-        $crud->required_fields('prefeitura_prefeitura_id');
-        
-        $crud->callback_before_insert(array($this,'checandoIdPrefeitura'));
+        $crud->fields('nome_secretario', 'email_secretario', 'funcao');
+        //$crud->required_fields('prefeitura_prefeitura_id');
+        $crud->where('prefeitura_prefeitura_id', $id);
+        //$crud->callback_before_insert(array($this,'checandoIdPrefeitura'));
+        $crud->callback_insert(array($this,'acharPrefeituraSecretario'));
         
         $output = $crud->render();
         return($output);
@@ -118,7 +120,7 @@ class AdminModel extends CI_Model {
         //$crud->unset_add_fields('prefeitura_prefeitura_id');
         //$ultima = mysql_query("SELECT LAST_INSERT_ID();");
         //print_r($ultima);die("adfasfd");
-        $crud->callback_insert(array($this,'acharPrefeitura'));
+        $crud->callback_insert(array($this,'acharPrefeituraTelefone'));
          $crud->where('prefeitura_prefeitura_id', $id);
         $output = $crud->render();
         return($output);
@@ -241,7 +243,14 @@ class AdminModel extends CI_Model {
         return $query;
     }
     
-    function acharPrefeitura($post_array)
+    function acharPrefeituraSecretario($post_array)
+    {
+       
+        $post_array['prefeitura_prefeitura_id'] = $this->uri->segment('3');
+        return $this->db->insert('secretario',$post_array);
+    }
+    
+    function acharPrefeituraTelefone($post_array)
     {
        
         $post_array['prefeitura_prefeitura_id'] = $this->uri->segment('3');
