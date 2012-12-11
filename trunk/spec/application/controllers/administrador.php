@@ -75,6 +75,17 @@ class Administrador extends CI_Controller {
 
     }
     
+    function telefone($id)
+    {       
+        $this->load->model('adminModel');
+        $output = $this->adminModel->crudTelefone($id);
+        
+        $this->_chamaTemplate($output); 
+
+    }
+    
+    
+    
     function prefeito()
     {       
         $this->load->model('adminModel');
