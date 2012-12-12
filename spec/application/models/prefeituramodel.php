@@ -30,4 +30,26 @@ class PrefeituraModel extends CI_Model {
 		$dados['blog'] = $this->db->get('blog')->result();
 		return $dados;
 	}
+	
+	function crudMensagem()
+	{
+		$crud = new grocery_CRUD();
+		
+		$crud->set_table('mensagem');
+		$crud->set_subject('Mensagem');
+		
+		$crud->columns('titulo_mensagem', 'texto_mensagem');
+		$crud->fields('titulo_mensagem', 'texto_mensagem');
+		$crud->required_fields('titulo_mensagem','texto_mensagem');
+		
+		$crud->display_as('titulo_mensagem','Título');
+		$crud->display_as('texto_mensagem','Texto');
+		
+		$crud->where('prefeitura_prefeitura_id', $this->session->userdata('id'));
+		
+		$crud->unset_edit();
+		$crud->unset_delete();
+		
+		return $crud->render();
+	}
 }
