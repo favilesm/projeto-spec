@@ -69,11 +69,11 @@ class Administrador extends CI_Controller {
     {
         $this->load->model('adminModel');
         $output = $this->adminModel->crudPrefeitura();
-        if( $this->session->userdata('erro') == 'insert' ) $output['erro'] = 'insert';
+        //if( $this->session->userdata('erro' ) $output['erro'] = 'insert';
         $this->_chamaTemplate($output);
     }
     
-    function secretario($id)
+    function secretario($id='')
     {       
         $this->load->model('adminModel');
         $output = $this->adminModel->crudSecretario($id);
@@ -82,7 +82,7 @@ class Administrador extends CI_Controller {
 
     }
     
-    function telefone($id)
+    function telefone($id='')
     {       
         $this->load->model('adminModel');
         $output = $this->adminModel->crudTelefone($id);
@@ -155,5 +155,9 @@ class Administrador extends CI_Controller {
         echo $output;
                 
     }
+    
+    
+    
+   
     
 }
