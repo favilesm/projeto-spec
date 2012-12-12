@@ -83,10 +83,14 @@ class AdminModel extends CI_Model {
              ->display_as('municipio','Município')
              ->display_as('endereco','Endereço')
              ->display_as('cnpj','CNPJ')    
-             ->display_as('email_prefeitura','Email da prefeitura')        
+             ->display_as('email_prefeitura','Email da prefeitura')
+                ->display_as('nome_prefeitura','Nome do prefeito')
              ->display_as('num_habitantes','Número de habitantes')                         
              ->display_as('telefone','Telefone')                         
              ->display_as('nome_prefeito','Nome do prefeito');
+       
+        $crud->callback_before_insert(array($this,'encriptasenha'));
+        $crud->callback_before_update(array($this,'encriptasenha')); 
        
         $output = $crud->render();
         return($output);
@@ -329,11 +333,13 @@ class AdminModel extends CI_Model {
         $this->db->where('prefeitura_id', $id);
         $query = $this->db->get()->row();
         
-        if( $query->ativada == 0){        
-            $ativada = 1;
+        if( $query->ativada == 'Não ativada'){        
+            $ativada = 'Ativada';
+             
         }
-        else if ( $query->ativada == 1){
-            $ativada = 0;
+        else if ( $query->ativada == 'Ativada'){
+            $ativada = 'Não ativada';
+            
         }
         $this->db->from('prefeitura');
         $this->db->where('prefeitura_id', $id);
