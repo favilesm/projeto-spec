@@ -50,7 +50,7 @@ class Login extends CI_Controller{
         }
         else
         {
-            echo 'login inválido';
+            $this->load->view('erro_login');    
         }
     }
     
