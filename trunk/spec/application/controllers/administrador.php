@@ -100,10 +100,10 @@ class Administrador extends CI_Controller {
         
     }
     
-    function prefeito()
+    function prefeito($id='')
     {       
         $this->load->model('adminModel');
-        $output = $this->adminModel->crudPrefeito();
+        $output = $this->adminModel->crudPrefeito($id);
         $this->_chamaTemplate($output); 
         
     }
