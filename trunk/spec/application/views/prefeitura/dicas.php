@@ -1,16 +1,13 @@
-<table border="1">
-    <thead>
-        <tr>
-            <th> Título </th>
-            <th> Texto </th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($dicas as $dica) : ?>
-            <tr>
-                <td><?php echo $dica->titulo_dica; ?></td>
-                <td><?php echo $dica->texto_dica; ?></td>
-            </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
+
+<div id="dicas">
+<?php foreach ($dicas as $dica) : ?>
+	<div id="dica-<?php echo $dica->dica_id; ?>" class="dica">
+		<div class="dica-titulo">
+			<?php echo $dica->titulo_dica; ?>
+		</div>
+		<div class="dica-conteudo">
+			<?php echo $dica->texto_dica; ?>
+		</div>
+	</div>
+<?php endforeach; ?>
+</div>
