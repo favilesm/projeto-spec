@@ -8,9 +8,9 @@ class UsuarioModel extends CI_Model {
         $this->db->where('login', $login);
         $this->db->where('senha', md5($senha));
         $query = $this->db->get('prefeitura');
-        if($query->num_rows == 1 && $query->row()->ativada == 'Ativada')
-        {
+        if($query->num_rows == 1 && $query->row()->ativada == 'Ativada'){
             return $query->row();
+            
         }
         
     }
