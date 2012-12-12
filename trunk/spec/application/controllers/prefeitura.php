@@ -15,7 +15,7 @@ class Prefeitura extends CI_Controller {
 
     function index()
     {
-        if (    $this->session->userdata('logado') == true  )
+        if ($this->session->userdata('logado') == true  )
         {
             $this->load->model('prefeituraModel');
             $output = $this->prefeituraModel->listarDicas();

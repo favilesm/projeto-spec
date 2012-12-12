@@ -34,8 +34,7 @@ class Login extends CI_Controller{
             
             $this->verificaUsuario();
         }
-        
-        elseif ($query = $this->usuariomodel->validarAdmin($senha, $login)) 
+        else if ($query = $this->usuariomodel->validarAdmin($senha, $login)) 
         {         
             $data = array (
                 'id' => $query->administrador_id,
