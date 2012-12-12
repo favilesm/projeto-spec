@@ -51,6 +51,13 @@ class Administrador extends CI_Controller {
         $this->_chamaTemplate($output);
     }
     
+    function noticiaAnexo($noticia_id)
+    {
+        $this->load->model('adminModel');
+        $output = $this->adminModel->crudNoticiaAnexo($noticia_id);
+        $this->_chamaTemplate($output);
+    }
+    
     function blog()
     {
         $this->load->model('adminModel');
