@@ -162,6 +162,7 @@ class AdminModel extends CI_Model {
         $crud->set_relation_n_n('prefeituras', 'prefeitura_x_noticia', 'prefeitura', 'noticia_noticia_id', 'prefeitura_prefeitura_id', 'nome_prefeitura');
         $crud->unset_add_fields('noticia_id');
         $crud->unset_edit_fields('noticia_id');
+        $crud->add_action('Anexos', 'ui-icon-plus','administrador/noticiaAnexo');
         $crud->display_as('titulo_noticia','Título')
              ->display_as('texto_noticia','Texto');
         
@@ -170,6 +171,38 @@ class AdminModel extends CI_Model {
         $output = $crud->render();
         return($output);
     }    
+    
+    function crudNoticiaAnexo($noticia_id)
+    {
+        $crud = new grocery_CRUD();
+        
+        $crud->set_table('arquivos');
+        $crud->set_subject('Anexo');
+        
+        $crud->set_relation('noticia_noticia_id','noticia','titulo_noticia');
+        
+        $crud->columns('noticia_noticia_id', 'arquivo');
+        $crud->fields('arquivo');
+        $crud->required_fields('arquivo');
+        
+        $crud->display_as('noticia_noticia_id', 'Título da notícia');
+        $crud->display_as('arquivo', 'Arquivo');
+        
+        $crud->set_field_upload('arquivo', 'assets/uploads/files/noticiaAnexo');
+        
+        $crud->where('noticia_noticia_id', $noticia_id);
+        
+        $crud->callback_insert(array($this, 'crudNoticiaAnexoInsert'));
+        
+        $output = $crud->render();
+        return($output);
+    }
+    
+    function crudNoticiaAnexoInsert($post_array)
+    {
+        $post_array['noticia_noticia_id'] = $this->uri->segment('3');
+        return $this->db->insert('arquivos', $post_array);
+    }
     
     function crudPrograma()
     {
