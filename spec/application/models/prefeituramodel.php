@@ -18,4 +18,16 @@ class PrefeituraModel extends CI_Model {
 		$dados['dicas'] = $this->db->get('dica')->result();
 		return $dados;
 	}
+	
+	function getProgramas()
+	{
+		$dados['programas'] = $this->db->get('programa')->result();
+		return $dados;
+	}
+	
+	function getBlog()
+	{
+		$dados['blog'] = $this->db->get('blog')->result();
+		return $dados;
+	}
 }

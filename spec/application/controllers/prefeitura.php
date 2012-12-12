@@ -40,4 +40,28 @@ class Prefeitura extends CI_Controller {
 		$this->load->view('prefeitura/dicas', $dicas);
 		$this->load->view('_inc/footer');
 	}
+	
+	function programa()
+	{
+		$programas = $this->prefeituramodel->getProgramas();
+		
+		$this->load->view('_inc/header_open');
+		$this->load->view('_inc/header');
+		$this->load->view('_inc/header_close');
+		$this->load->view('prefeitura/top');
+		$this->load->view('prefeitura/programas', $programas);
+		$this->load->view('_inc/footer');
+	}
+	
+	function blog()
+	{
+		$blog = $this->prefeituramodel->getBlog();
+		
+		$this->load->view('_inc/header_open');
+		$this->load->view('_inc/header');
+		$this->load->view('_inc/header_close');
+		$this->load->view('prefeitura/top');
+		$this->load->view('prefeitura/blog', $blog);
+		$this->load->view('_inc/footer');
+	}
 }
