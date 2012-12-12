@@ -11,10 +11,14 @@ class AdminModel extends CI_Model {
         $crud = new grocery_CRUD();
         $crud->set_table('dica');
         $crud->set_subject('Dica');
-        $crud->columns('titulo_dica','texto_dica');
-        $crud->required_fields('titulo_dica','texto_dica');
+        $crud->columns('titulo_dica','texto_dica','prefeitura_prefeitura_id');
+        $crud->required_fields('titulo_dica','texto_dica','prefeitura_prefeitura_id');
+        
+        $crud->set_relation('prefeitura_prefeitura_id','prefeitura','nome_prefeitura');
+        
         $crud->display_as('titulo_dica','Título');
         $crud->display_as('texto_dica','Texto');
+        $crud->display_as('prefeitura_prefeitura_id','Prefeitura');
         
         $output = $crud->render();
         return($output);
@@ -166,10 +170,10 @@ class AdminModel extends CI_Model {
         $crud->set_subject('Noticia');
         $crud->required_fields('titulo_noticia','texto_noticia');
         $crud->columns('titulo_noticia','texto_noticia','prefeituras', 'file_url');
-        $crud->set_relation_n_n('prefeituras', 'prefeitura_x_noticia', 'prefeitura', 'noticia_noticia_id', 'prefeitura_prefeitura_id', 'nome_prefeitura');
+        $crud->set_relation_n_n('prefeituras', 'prefeitura_x_noticia', 'prefeitura', 'noticia_noticia_id', 'prefeitura_prefeitura_id', 'nome_prefeitura','priority');
         $crud->unset_add_fields('noticia_id');
         $crud->unset_edit_fields('noticia_id');
-        $crud->add_action('Anexos', 'ui-icon-plus','administrador/noticiaAnexo');
+        $crud->add_action('Arquivos', 'ui-icon-plus','administrador/noticiaAnexo');
         $crud->display_as('titulo_noticia','Título')
              ->display_as('texto_noticia','Texto');
         
@@ -185,7 +189,7 @@ class AdminModel extends CI_Model {
         
         $this->db->where('noticia_id', $noticia_id);
         $crud->set_table('arquivos');
-        $crud->set_subject('anexo à notícia '.$this->db->get('noticia')->row()->titulo_noticia);
+        $crud->set_subject('arquivo à notícia '.$this->db->get('noticia')->row()->titulo_noticia);
         
         $crud->set_relation('noticia_noticia_id','noticia','titulo_noticia');
         
