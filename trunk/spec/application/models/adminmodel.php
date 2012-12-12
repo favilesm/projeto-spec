@@ -176,16 +176,16 @@ class AdminModel extends CI_Model {
     {
         $crud = new grocery_CRUD();
         
+        $this->db->where('noticia_id', $noticia_id);
         $crud->set_table('arquivos');
-        $crud->set_subject('Anexo');
+        $crud->set_subject('anexo à notícia '.$this->db->get('noticia')->row()->titulo_noticia);
         
         $crud->set_relation('noticia_noticia_id','noticia','titulo_noticia');
         
-        $crud->columns('noticia_noticia_id', 'arquivo');
+        $crud->columns('arquivo');
         $crud->fields('arquivo');
         $crud->required_fields('arquivo');
         
-        $crud->display_as('noticia_noticia_id', 'Título da notícia');
         $crud->display_as('arquivo', 'Arquivo');
         
         $crud->set_field_upload('arquivo', 'assets/uploads/files/noticiaAnexo');
