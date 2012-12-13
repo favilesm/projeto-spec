@@ -82,8 +82,8 @@ class AdminModel extends CI_Model {
         $crud->add_action('Prefeito',base_url('/assets/uploads/mayor.png'),'administrador/prefeito');
         $crud->add_action('Secretarios', base_url('/assets/uploads/secretario.png'),'administrador/secretario');
         $crud->add_action('Telefone', base_url('/assets/uploads/telefone.png'),'administrador/telefone');
-        $crud->unset_add_fields('quantidade_secretario','ativada');
-        $crud->unset_edit_fields('quantidade_secretario','ativada');
+        $crud->unset_add_fields('quantidade_secretario','ativada','ufmunicipio', 'id_uf', 'prefeito_prefeito_id');
+        $crud->unset_edit_fields('quantidade_secretario','ativada','ufmunicipio','id_uf', 'prefeito_prefeito_id');
 
         $crud->display_as('uf','UF')             
              ->display_as('municipio','Município')
@@ -96,7 +96,11 @@ class AdminModel extends CI_Model {
              ->display_as('nome_prefeito','Nome do prefeito');
        
         $crud->callback_before_insert(array($this,'encriptasenha'));
-        $crud->callback_before_update(array($this,'encriptasenha')); 
+		$crud->callback_before_update(array($this,'encriptasenha'));
+		
+		$crud->callback_after_insert(array($this,'concatena'));
+		$crud->callback_after_update(array($this,'concatena'));
+         
        
         $output = $crud->render();
         return($output);
@@ -121,16 +125,16 @@ class AdminModel extends CI_Model {
     
     function decQuantidade($primary_key){
         
-        $post_array['prefeitura_prefeitura_id'] = $this->uri->segment('3');
+        $post_array['prefeitura_id'] = $this->uri->segment('3');
         
         $this->db->from('prefeitura');
-        $this->db->where('prefeitura_id', $post_array['prefeitura_prefeitura_id']);
+        $this->db->where('prefeitura_id', $post_array['prefeitura_id']);
         $query3 = $this->db->get()->row();
         
         $query3->quantidade_secretario --;
                 
         $this->db->from('prefeitura');
-        $this->db->where('prefeitura_id', $post_array['prefeitura_prefeitura_id']);
+        $this->db->where('prefeitura_id', $post_array['prefeitura_id']);
         $this->db->set('quantidade_secretario',$query3->quantidade_secretario);
         $this->db->update('prefeitura');
     }
@@ -172,7 +176,10 @@ class AdminModel extends CI_Model {
         $crud->set_subject('Noticia');
         $crud->required_fields('titulo_noticia','texto_noticia');
         $crud->columns('titulo_noticia','texto_noticia','prefeituras', 'file_url');
-        $crud->set_relation_n_n('prefeituras', 'prefeitura_x_noticia', 'prefeitura', 'noticia_noticia_id', 'prefeitura_prefeitura_id', 'nome_prefeitura','priority');
+        $crud->set_relation_n_n('prefeituras', 'prefeitura_x_noticia', 'prefeitura',
+								'noticia_noticia_id', 'prefeitura_prefeitura_id', 
+								'ufmunicipio','priority');	
+		
         $crud->unset_add_fields('noticia_id');
         $crud->unset_edit_fields('noticia_id');
         $crud->add_action('Arquivos', base_url('/assets/uploads/file.png'),'administrador/noticiaAnexo');
@@ -370,6 +377,22 @@ class AdminModel extends CI_Model {
     function crudPrefeitoInsert($post_array)
     {
         $post_array['prefeitura_prefeitura_id'] = $this->uri->segment('3');
-        return $this->db->insert('prefeit', $post_array);
+        return $this->db->insert('prefeito', $post_array);
+    }
+	
+	function concatena($post_array=''){
+        
+        $post_array['prefeitura_id'] = //como pegar esse id??;
+        
+        $this->db->from('prefeitura');
+        $this->db->where('prefeitura_id', $post_array['prefeitura_id']);
+        $query = $this->db->get()->row();
+        
+        $concatena = $query->uf.$query->municipio;
+                
+        $this->db->from('prefeitura');
+        $this->db->where('prefeitura_id', $post_array['prefeitura_id']);
+        $this->db->set('ufmunicipio',$concatena);
+        $this->db->update('prefeitura');
     }
 }
