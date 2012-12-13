@@ -1,0 +1,5 @@
+
+--This line, and those below, will be ignored--
+
+M    spec/application/config/database.php
+M    spec/application/models/adminmodel.php
