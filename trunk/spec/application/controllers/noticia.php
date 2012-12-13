@@ -27,7 +27,7 @@ class Noticia extends CI_Controller {
                         
 			$crud->set_table('noticia');
 			$crud->set_relation('id_uf','uf','nome');
-			$crud->set_relation('id_municipio','municipio','nome');
+			$crud->set_relation_n_n('id_municipio','municipio','nome');
 			$crud->required_fields('id_uf','id_municipio');		
 			
 			//IF YOU HAVE A LARGE AMOUNT OF DATA, ENABLE THE CALLBACKS BELOW - FOR EXAMPLE ONE USER HAD 36000 municipios AND SLOWERD UP THE LOADING PROCESS. THESE CALLBACKS WILL LOAD EMPTY SELECT FIELDS THEN POPULATE THEM AFTERWARDS
