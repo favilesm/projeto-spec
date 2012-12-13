@@ -1,4 +1,7 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="utf-8" />
     <link rel="stylesheet" href="<?=base_url()?>public/css/estilo.css" type="text/css" />
 </head>
 

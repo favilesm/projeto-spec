@@ -1,7 +1,10 @@
-<html>
-    <head>
-        <link rel="stylesheet" href="<?=base_url()?>public/css/estilo.css" type="text/css" />
-    </head>
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="<?=base_url()?>public/css/estilo.css" type="text/css" />
+</head>
     <body>
         <div class="header">
             <div class="logo_header">
