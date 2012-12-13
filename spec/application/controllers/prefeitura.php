@@ -10,16 +10,25 @@ class Prefeitura extends CI_Controller {
 	
 	function index()
 	{
+            if (    $this->session->userdata('logado') == true  )
+            {
 		$this->load->view('_inc/header_open');
 		$this->load->view('_inc/header');
 		$this->load->view('_inc/header_close');
 		$this->load->view('prefeitura/top');
 		$this->load->view('_inc/footer');
+            }
+            else
+            {
+                redirect('login');
+            }
 	}
 	
 	function noticia()
 	{
-		$noticias = $this->prefeituramodel->getNoticias();
+	    if (    $this->session->userdata('logado') == true  )
+            {
+                $noticias = $this->prefeituramodel->getNoticias();
 		
 		$this->load->view('_inc/header_open');
 		$this->load->view('_inc/header');
@@ -27,11 +36,18 @@ class Prefeitura extends CI_Controller {
 		$this->load->view('prefeitura/top');
 		$this->load->view('prefeitura/noticias', $noticias);
 		$this->load->view('_inc/footer');
+            }
+            else
+            {
+                redirect('login');
+            }
 	}
 	
 	function dica()
 	{
-		$dicas = $this->prefeituramodel->getDicas();
+	    if (    $this->session->userdata('logado') == true  )
+            {
+                $dicas = $this->prefeituramodel->getDicas();
 		
 		$this->load->view('_inc/header_open');
 		$this->load->view('_inc/header');
@@ -39,11 +55,18 @@ class Prefeitura extends CI_Controller {
 		$this->load->view('prefeitura/top');
 		$this->load->view('prefeitura/dicas', $dicas);
 		$this->load->view('_inc/footer');
+            }
+            else
+            {
+                redirect('login');
+            }
 	}
 	
 	function programa()
 	{
-		$programas = $this->prefeituramodel->getProgramas();
+	    if (    $this->session->userdata('logado') == true  )
+            {
+                $programas = $this->prefeituramodel->getProgramas();
 		
 		$this->load->view('_inc/header_open');
 		$this->load->view('_inc/header');
@@ -51,11 +74,18 @@ class Prefeitura extends CI_Controller {
 		$this->load->view('prefeitura/top');
 		$this->load->view('prefeitura/programas', $programas);
 		$this->load->view('_inc/footer');
+            }
+            else
+            {
+                redirect('login');
+            }
 	}
 	
 	function blog()
 	{
-		$blog = $this->prefeituramodel->getBlog();
+	    if (    $this->session->userdata('logado') == true  )
+            {
+                $blog = $this->prefeituramodel->getBlog();
 		
 		$this->load->view('_inc/header_open');
 		$this->load->view('_inc/header');
@@ -63,11 +93,18 @@ class Prefeitura extends CI_Controller {
 		$this->load->view('prefeitura/top');
 		$this->load->view('prefeitura/blog', $blog);
 		$this->load->view('_inc/footer');
+            }
+            else
+            {
+                redirect('login');
+            }
 	}
 	
 	function mensagem()
 	{
-		$output = $this->prefeituramodel->crudMensagem();
+	    if (    $this->session->userdata('logado') == true  )
+            {
+                $output = $this->prefeituramodel->crudMensagem();
 		
 		$this->load->view('_inc/header_open');
 		$this->load->view('_inc/header_grocery', $output);
@@ -76,5 +113,10 @@ class Prefeitura extends CI_Controller {
 		$this->load->view('prefeitura/top');
 		$this->load->view('_inc/grocery', $output);
 		$this->load->view('_inc/footer');
+            }
+            else
+            {
+                redirect('login');
+            }
 	}
 }

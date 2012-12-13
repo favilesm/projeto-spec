@@ -14,107 +14,174 @@ class Administrador extends CI_Controller {
             $this->load->model('adminModel');
             $output = $this->adminModel->crudAdmin($this->verificaAdmin());
             $this->_chamaTemplate($output);
-            
         }
         else
         {
             redirect('login');
         }
-
     }
     
     function dica()
     {
-        $this->load->model('adminModel');
-        $output = $this->adminModel->crudDica();
-        $this->_chamaTemplate($output);
+        if (    $this->session->userdata('logado') == true  )
+        {
+            $this->load->model('adminModel');
+            $output = $this->adminModel->crudDica();
+            $this->_chamaTemplate($output);
+        }
+        else
+        {
+            redirect('login');
+        }
     }
     
     function programa()
     {
-        $this->load->model('adminModel');
-        $output = $this->adminModel->crudPrograma();
-        $this->_chamaTemplate($output);
+        if (    $this->session->userdata('logado') == true  )
+        {
+            $this->load->model('adminModel');
+            $output = $this->adminModel->crudPrograma();
+            $this->_chamaTemplate($output);
+        }
+        else
+        {
+            redirect('login');
+        }
     }
     
     function noticia()
     {
-        
-        $this->load->model('adminModel');
-        $output = $this->adminModel->crudNoticia();
-        $this->_chamaTemplate($output);
+        if (    $this->session->userdata('logado') == true  )
+        {
+            $this->load->model('adminModel');
+            $output = $this->adminModel->crudNoticia();
+            $this->_chamaTemplate($output);
+        }
+        else
+        {
+            redirect('login');
+        }
     }
     
     function noticiaAnexo($noticia_id)
     {
-        $this->load->model('adminModel');
-        $output = $this->adminModel->crudNoticiaAnexo($noticia_id);
-        $this->_chamaTemplate($output);
+        if (    $this->session->userdata('logado') == true  )
+        {
+            $this->load->model('adminModel');
+            $output = $this->adminModel->crudNoticiaAnexo($noticia_id);
+            $this->_chamaTemplate($output);
+        }
+        else
+        {
+            redirect('login');
+        }
     }
     
     function blog()
     {
-        $this->load->model('adminModel');
-        $output = $this->adminModel->crudBlog();
-        $this->_chamaTemplate($output);
+        if (    $this->session->userdata('logado') == true  )
+        {
+            $this->load->model('adminModel');
+            $output = $this->adminModel->crudBlog();
+            $this->_chamaTemplate($output);
+        }
+        else
+        {
+            redirect('login');
+        }
     }
     
     function prefeitura()
     {
-        $this->load->model('adminModel');
-        $output = $this->adminModel->crudPrefeitura();
-        //if( $this->session->userdata('erro' ) $output['erro'] = 'insert';
-        $this->_chamaTemplate($output);
+        if (    $this->session->userdata('logado') == true  )
+        {
+            $this->load->model('adminModel');
+            $output = $this->adminModel->crudPrefeitura();
+            //if( $this->session->userdata('erro' ) $output['erro'] = 'insert';
+            $this->_chamaTemplate($output);
+        }
+        else
+        {
+            redirect('login');
+        }
     }
     
     function secretario($id='')
     {       
-        $this->load->model('adminModel');
-        $output = $this->adminModel->crudSecretario($id);
-        
-        $this->_chamaTemplate($output); 
-
+        if (    $this->session->userdata('logado') == true  )
+        {
+            $this->load->model('adminModel');
+            $output = $this->adminModel->crudSecretario($id);
+            $this->_chamaTemplate($output);
+        }
+        else
+        {
+            redirect('login');
+        }
     }
     
     function telefone($id='')
     {       
-        $this->load->model('adminModel');
-        $output = $this->adminModel->crudTelefone($id);
-        
-        $this->_chamaTemplate($output); 
-
+        if (    $this->session->userdata('logado') == true  )
+        {
+            $this->load->model('adminModel');
+            $output = $this->adminModel->crudTelefone($id);
+            $this->_chamaTemplate($output); 
+        }
+        else
+        {
+            redirect('login');
+        }
     }
     
     function ativar($id)
     {
-        $this->load->model('adminModel');
-        $output = $this->adminModel->ativarPrefeitura($id);
-         redirect('/administrador/prefeitura');
-        //$this->_chamaTemplate($output); 
-        
+        if (    $this->session->userdata('logado') == true  )
+        {
+            $this->load->model('adminModel');
+            $output = $this->adminModel->ativarPrefeitura($id);
+             redirect('/administrador/prefeitura');
+            //$this->_chamaTemplate($output);
+        }
+        else
+        {
+            redirect('login');
+        }
     }
     
     function prefeito($id='')
     {       
-        $this->load->model('adminModel');
-        $output = $this->adminModel->crudPrefeito($id);
-        $this->_chamaTemplate($output); 
-        
+        if (    $this->session->userdata('logado') == true  )
+        {
+            $this->load->model('adminModel');
+            $output = $this->adminModel->crudPrefeito($id);
+            $this->_chamaTemplate($output);
+        }
+        else
+        {
+            redirect('login');
+        }
     }
     
     function mensagem()
     {       
-        $this->load->model('adminModel');
-        $output = $this->adminModel->crudMensagem($this->verificaAdmin());
-        
-        $this->load->view('_inc/header_open');
-        $this->load->view('_inc/header_grocery', $output);
-        $this->load->view('_inc/header');
-        $this->load->view('_inc/header_close');
-        $this->load->view('admin/top');
-        $this->load->view('_inc/grocery', $output);
-        $this->load->view('_inc/footer');
+        if (    $this->session->userdata('logado') == true  )
+        {
+            $this->load->model('adminModel');
+            $output = $this->adminModel->crudMensagem($this->verificaAdmin());
 
+            $this->load->view('_inc/header_open');
+            $this->load->view('_inc/header_grocery', $output);
+            $this->load->view('_inc/header');
+            $this->load->view('_inc/header_close');
+            $this->load->view('admin/top');
+            $this->load->view('_inc/grocery', $output);
+            $this->load->view('_inc/footer');
+        }
+        else
+        {
+            redirect('login');
+        }
     }
     
     function verificaAdmin()
@@ -150,8 +217,5 @@ class Administrador extends CI_Controller {
                 
     }
     
-    
-    
-   
-    
+
 }
