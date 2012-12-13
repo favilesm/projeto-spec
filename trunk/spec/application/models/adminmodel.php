@@ -82,9 +82,14 @@ class AdminModel extends CI_Model {
         $crud->add_action('Prefeito',base_url('/assets/uploads/mayor.png'),'administrador/prefeito');
         $crud->add_action('Secretarios', base_url('/assets/uploads/secretario.png'),'administrador/secretario');
         $crud->add_action('Telefone', base_url('/assets/uploads/telefone.png'),'administrador/telefone');
-        $crud->unset_add_fields('quantidade_secretario','ativada','ufmunicipio', 'id_uf', 'prefeito_prefeito_id');
-        $crud->unset_edit_fields('quantidade_secretario','ativada','ufmunicipio','id_uf', 'prefeito_prefeito_id');
-
+		$crud->fields('municipio','endereco','cnpj','num_habitantes','fax','uf','email_prefeitura','login','senha');
+		$crud->columns('municipio','endereco','cnpj','num_habitantes','fax','uf','email_prefeitura','login','senha');
+		$crud->required_fields('municipio','endereco','cnpj','num_habitantes','fax','uf','email_prefeitura','login','senha');
+        //$crud->unset_add_fields('quantidade_secretario','ativada','ufmunicipio', 'id_uf', 'prefeito_prefeito_id');
+        //$crud->unset_edit_fields('quantidade_secretario','ativada','ufmunicipio','id_uf', 'prefeito_prefeito_id');
+		$crud->set_relation('uf', 'uf', 'nome');
+			
+		
         $crud->display_as('uf','UF')             
              ->display_as('municipio','Município')
              ->display_as('endereco','Endereço')
@@ -174,14 +179,13 @@ class AdminModel extends CI_Model {
 
         $crud->set_table('noticia');
         $crud->set_subject('Noticia');
-        $crud->required_fields('titulo_noticia','texto_noticia');
-        $crud->columns('titulo_noticia','texto_noticia','prefeituras', 'file_url');
+        $crud->required_fields('titulo_noticia','texto_noticia', 'prefeituras');
+        $crud->columns('titulo_noticia','texto_noticia','prefeituras');
         $crud->set_relation_n_n('prefeituras', 'prefeitura_x_noticia', 'prefeitura',
 								'noticia_noticia_id', 'prefeitura_prefeitura_id', 
-								'ufmunicipio','priority');	
+								'ufmunicipio');	
 		
-        $crud->unset_add_fields('noticia_id');
-        $crud->unset_edit_fields('noticia_id');
+        
         $crud->add_action('Arquivos', base_url('/assets/uploads/file.png'),'administrador/noticiaAnexo');
         $crud->display_as('titulo_noticia','Título')
              ->display_as('texto_noticia','Texto');
@@ -380,9 +384,20 @@ class AdminModel extends CI_Model {
         return $this->db->insert('prefeito', $post_array);
     }
 	
-	function concatena($post_array=''){
+	function concatena($post_array){
         
-        $post_array['prefeitura_id'] = //como pegar esse id??;
+		//$post_array
+		
+		$this->db->where('id_uf', $post_array['uf']);
+		$uf = $this->db->get('uf')->row();
+		
+		//$uf->nome;
+		
+		$post_array['ufmunicipio'] = $uf->nome.'-'.$post_array['municipio'];
+		
+		return $this->db->insert('prefeitura', $post_array);
+		
+        /*$post_array['prefeitura_id'] = //como pegar esse id??;
         
         $this->db->from('prefeitura');
         $this->db->where('prefeitura_id', $post_array['prefeitura_id']);
@@ -393,6 +408,6 @@ class AdminModel extends CI_Model {
         $this->db->from('prefeitura');
         $this->db->where('prefeitura_id', $post_array['prefeitura_id']);
         $this->db->set('ufmunicipio',$concatena);
-        $this->db->update('prefeitura');
+        $this->db->update('prefeitura');*/
     }
 }
