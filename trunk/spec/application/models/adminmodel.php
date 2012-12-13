@@ -217,7 +217,8 @@ class AdminModel extends CI_Model {
         return $this->db->insert('arquivos', $post_array);
     }
     
-    function crudPrograma()
+    function crudPrograma($id)
+
     {
         $crud = new grocery_CRUD();
         $crud->set_table('programa');
@@ -228,7 +229,7 @@ class AdminModel extends CI_Model {
         $crud->required_fields('titulo_programa','texto_programa');
         $crud->display_as('titulo_programa','Título');
         $crud->display_as('texto_programa','Texto');
-
+        
         $output = $crud->render();
         return($output);
     }
@@ -239,26 +240,31 @@ class AdminModel extends CI_Model {
         
         $crud->set_table('mensagem');
         $crud->set_subject('Mensagem');
-        
+               
         $crud->set_relation('prefeitura_prefeitura_id','prefeitura','nome_prefeitura');
         $crud->set_relation('administrador_administrador_id','administrador','login');
         
         $crud->fields('titulo_mensagem', 'texto_mensagem', 'prefeitura_prefeitura_id');
         $crud->required_fields('titulo_mensagem','texto_mensagem','prefeitura_prefeitura_id');
         
+
         $crud->display_as('titulo_mensagem','Título');
         $crud->display_as('texto_mensagem','Texto');
         $crud->display_as('prefeitura_prefeitura_id','Destinatário');
         $crud->display_as('administrador_administrador_id','Remetente');
+
+        $crud->unset_add_fields('mensagem_id','administrador_administrador_id');
+        $crud->unset_edit_fields('mensagem_id', 'prefeitura_prefeitura_id','administrador_administrador_id');
+        
+              
         
         // impede administradores normais de ver a coluna de remetente
         if ($this->session->userdata('id') != 0) {
             $crud->where('administrador_administrador_id', $this->session->userdata('id'));
             $crud->columns('titulo_mensagem', 'texto_mensagem', 'prefeitura_prefeitura_id');
         }
-        
         $crud->callback_insert(array($this, 'crudMensagemInsert'));
-        
+
         $output = $crud->render();
         return($output);
     }

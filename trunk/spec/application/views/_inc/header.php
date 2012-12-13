@@ -1,16 +1,9 @@
-<style type='text/css'>
-body
-{
-    font-family: Arial;
-    font-size: 14px;
-}
-a {
-    color: blue;
-    text-decoration: none;
-    font-size: 14px;
-}
-a:hover
-{
-    text-decoration: underline;
-}
-</style>
+<html>
+    <head>
+        <link rel="stylesheet" href="<?=base_url()?>public/css/estilo.css" type="text/css" />
+    </head>
+    <body>
+        <div class="header">
+        LOGO
+        </div>
+        <div id ="borda_top_dente"></div>
