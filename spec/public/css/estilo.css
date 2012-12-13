@@ -1,0 +1,76 @@
+body{
+    background-image:url('background_spec.png');
+}
+
+#borda_top_dente{
+    background: url('topTooth.png') repeat-x left top;
+    width: 920px;
+    height: 20px;
+    margin: 0 auto;
+    margin-bottom: -21px;
+    margin-top: 30px;
+}
+#borda_bottom_dente{
+    background: url('bottomTooth.png') repeat-x left top;
+    width: 920px;
+    height: 20px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+}
+#borda_login{
+    
+    width: 920px;
+    height: 120px;
+    margin: auto;
+    background-color: white;
+}
+
+.login_form{
+    width: 400px;
+    height: auto;
+    margin: auto;
+    
+    background-color: #ffffff;
+    
+}
+.header{
+    
+       
+    background: #263974;
+    background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255, 255, 255, 1)), color-stop(100%,rgba(255, 255, 255, 0)));
+    background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0%,rgba(255, 255, 255, 0) 100%);
+    background-image: -o-linear-gradient(top, rgba(255, 255, 255, 1) 0%,rgba(255, 255, 255, 0) 100%);
+    background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 1) 0%,rgba(255, 255, 255, 0) 100%);
+    background-image: linear-gradient(top, rgba(255, 255, 255, 1) 0%,rgba(255, 255, 255, 0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 );
+
+    width: 920px;
+    height: 130px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px; 
+    margin: 0 auto;
+}
+#footer{
+    
+    background-color: #434343;
+    width: 1351px;
+    height: 94px;
+}
+.info{
+    width: 920px;
+    margin: 0 auto;
+    padding: 0 0 30px;
+}
+.endereco{
+    width: 730px;
+    margin-right: 20px;
+    padding-top: 20px;
+    float: left;
+    color: white;
+}
+.logo{
+    background: none;
+    float:right;
+    padding-top: 20px;
+}

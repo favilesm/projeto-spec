@@ -35,7 +35,7 @@ class Administrador extends CI_Controller {
         }
     }
     
-    function programa()
+    function programa($id='')
     {
         if (    $this->session->userdata('logado') == true  )
         {
