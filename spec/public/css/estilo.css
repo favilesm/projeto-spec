@@ -50,6 +50,7 @@ body{
     border-top-left-radius: 3px;
     border-top-right-radius: 3px; 
     margin: 0 auto;
+    margin-top: 46px;
 }
 #footer{
     
@@ -69,7 +70,25 @@ body{
     float: left;
     color: white;
 }
-.logo{
+.logo_header{
+    background-color: rgba(255, 255, 255, 0.8);
+    height: 100px;
+    width: 330px;
+    margin-top: -35px;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 35px;
+}
+
+.logo_header a {
+    margin: 0;
+    line-height: 1.6em;
+    margin-top: -10px;
+float: left;
+}
+
+.logo_footer{
     background: none;
     float:right;
     padding-top: 20px;
