@@ -175,7 +175,7 @@ class AdminModel extends CI_Model {
         $crud->set_relation_n_n('prefeituras', 'prefeitura_x_noticia', 'prefeitura', 'noticia_noticia_id', 'prefeitura_prefeitura_id', 'nome_prefeitura','priority');
         $crud->unset_add_fields('noticia_id');
         $crud->unset_edit_fields('noticia_id');
-        $crud->add_action('Arquivos', 'ui-icon-plus','administrador/noticiaAnexo');
+        $crud->add_action('Arquivos', base_url('/assets/uploads/file.png'),'administrador/noticiaAnexo');
         $crud->display_as('titulo_noticia','Título')
              ->display_as('texto_noticia','Texto');
         
