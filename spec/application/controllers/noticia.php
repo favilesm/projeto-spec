@@ -27,8 +27,8 @@ class Noticia extends CI_Controller {
                         
 			$crud->set_table('noticia');
 			$crud->set_relation('id_uf','uf','nome');
-			$crud->set_relation_n_n('id_municipio','municipio','nome');
-			$crud->required_fields('id_uf','id_municipio');		
+			$crud->set_relation_n_n('prefeituras','prefeitura_x_noticia','prefeitura','noticia_noticia_id','prefeitura_prefeitura_id','municipio','priority');
+			//$crud->required_fields('id_uf','id_municipio');		
 			
 			//IF YOU HAVE A LARGE AMOUNT OF DATA, ENABLE THE CALLBACKS BELOW - FOR EXAMPLE ONE USER HAD 36000 municipios AND SLOWERD UP THE LOADING PROCESS. THESE CALLBACKS WILL LOAD EMPTY SELECT FIELDS THEN POPULATE THEM AFTERWARDS
 			$crud->callback_add_field('id_municipio', array($this, 'empty_municipio_dropdown_select'));
@@ -43,10 +43,10 @@ class Noticia extends CI_Controller {
 				//SETUP YOUR DROPDOWNS
 				//Parent field item always listed first in array, in this case id_uf
 				//Child field items need to follow in order, e.g stateID then id_municipio
-				'dd_dropdowns' => array('id_uf','id_municipio'),
+				'dd_dropdowns' => array('id_uf','prefeituras'),
 				//SETUP URL POST FOR EACH CHILD
 				//List in order as per above
-				'dd_url' => array('', site_url().'/noticia/get_municipios/'),
+				'dd_url' => array('', site_url().'/noticia/get_prefeituras/'),
 				//LOADER THAT GETS DISPLAYED NEXT TO THE PARENT DROPDOWN WHILE THE CHILD LOADS
 				'dd_ajax_loader' => base_url().'ajax-loader.gif'
 			);
@@ -103,17 +103,17 @@ class Noticia extends CI_Controller {
 	}
 	
 	//GET JSON OF municipios
-	function get_municipios() {
+	function get_prefeituras() {
 		$id_uf = $this->uri->segment(3);
 		
 		$this->db->select("*")
-				 ->from('municipio')
+				 ->from('prefeitura')
 				 ->where('id_uf', $id_uf);
 		$db = $this->db->get();
 		
 		$array = array();
 		foreach($db->result() as $row):
-			$array[] = array("value" => $row->id_municipio, "property" => $row->nome);
+			$array[] = array("value" => $row->prefeitura_id, "property" => $row->municipio);
 		endforeach;
 		
 		echo json_encode($array);
