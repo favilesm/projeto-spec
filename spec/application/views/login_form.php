@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="<?=base_url()?>public/css/estilo.css" type="text/css" />
+    <link rel="stylesheet" href="public/css/estilo.css" type="text/css" />
 </head>
 
 <?php include("_inc/header.php"); ?>
