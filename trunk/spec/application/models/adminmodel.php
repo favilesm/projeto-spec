@@ -14,7 +14,7 @@ class AdminModel extends CI_Model {
         $crud->columns('titulo_dica','texto_dica','prefeitura_prefeitura_id');
         $crud->required_fields('titulo_dica','texto_dica','prefeitura_prefeitura_id');
         
-        $crud->set_relation('prefeitura_prefeitura_id','prefeitura','nome_prefeitura');
+        $crud->set_relation('prefeitura_prefeitura_id','prefeitura','prefeito_prefeito_id');
         
         $crud->display_as('titulo_dica','Título');
         $crud->display_as('texto_dica','Texto');
@@ -36,7 +36,8 @@ class AdminModel extends CI_Model {
         $crud = new grocery_CRUD();
         $crud->set_table('administrador');
         $crud->set_subject('Administrador');
-        $crud->columns('login','senha');
+        $crud->columns('login');
+		$crud->field_type('senha', 'password');
         $crud->required_fields('login', 'senha');
        
         if ($id == 1)
@@ -178,7 +179,7 @@ class AdminModel extends CI_Model {
         $crud = new grocery_CRUD();
 
         $crud->set_table('noticia');
-        $crud->set_subject('Noticia');
+        $crud->set_subject('Notícia');
         $crud->required_fields('titulo_noticia','texto_noticia', 'prefeituras');
         $crud->columns('titulo_noticia','texto_noticia','prefeituras');
         $crud->set_relation_n_n('prefeituras', 'prefeitura_x_noticia', 'prefeitura',
@@ -228,7 +229,7 @@ class AdminModel extends CI_Model {
         return $this->db->insert('arquivos', $post_array);
     }
     
-    function crudPrograma($id)
+    function crudPrograma($id='')
 
     {
         $crud = new grocery_CRUD();
@@ -252,7 +253,7 @@ class AdminModel extends CI_Model {
         $crud->set_table('mensagem');
         $crud->set_subject('Mensagem');
                
-        $crud->set_relation('prefeitura_prefeitura_id','prefeitura','nome_prefeitura');
+        $crud->set_relation('prefeitura_prefeitura_id','prefeitura','prefeito_prefeito_id');
         $crud->set_relation('administrador_administrador_id','administrador','login');
         
         $crud->fields('titulo_mensagem', 'texto_mensagem', 'prefeitura_prefeitura_id');

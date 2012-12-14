@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="<?=base_url()?>public/css/estilo.css" type="text/css" />
+    <link rel="stylesheet" href="public/css/estilo.css" type="text/css" />
 </head>
     
     
@@ -15,7 +15,7 @@
                 </div>
                 <div class="logo_footer">
                     <a href="http://www.cjr.org.br">
-                        <img src="<?=base_url()?>public/css/logo_cjr_footer.png" alt="CJR">
+                        <img src="public/css/logo_cjr_footer.png" alt="CJR">
                     </a>
                 </div>
             </div>
