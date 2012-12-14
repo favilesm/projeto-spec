@@ -51,7 +51,7 @@ foreach($css_files as $file): ?>
  
     </div>
 <!-- Beginning footer -->
-<div>em desenvolvimento</div>
+
 <!-- End of Footer -->
 </body>
 <!--INICIO FOOTER PERSONALIZADO -->
