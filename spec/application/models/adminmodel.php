@@ -11,14 +11,15 @@ class AdminModel extends CI_Model {
         $crud = new grocery_CRUD();
         $crud->set_table('dica');
         $crud->set_subject('Dica');
-        $crud->columns('titulo_dica','texto_dica','prefeitura_prefeitura_id');
-        $crud->required_fields('titulo_dica','texto_dica','prefeitura_prefeitura_id');
+        $crud->columns('titulo_dica','texto_dica', 'prefeituras');
+        $crud->required_fields('titulo_dica','texto_dica','prefeituras');
         
-        $crud->set_relation('prefeitura_prefeitura_id','prefeitura','prefeito_prefeito_id');
+        $crud->set_relation_n_n('prefeituras', 'prefeitura_x_dica', 'prefeitura',
+                                'dica_dica_id', 'prefeitura_prefeitura_id', 
+                                'ufmunicipio'); 
         
         $crud->display_as('titulo_dica','Título');
         $crud->display_as('texto_dica','Texto');
-        $crud->display_as('prefeitura_prefeitura_id','Prefeitura');
         
         $output = $crud->render();
         return($output);
@@ -190,8 +191,6 @@ class AdminModel extends CI_Model {
         $crud->add_action('Arquivos', base_url('/assets/uploads/file.png'),'administrador/noticiaAnexo');
         $crud->display_as('titulo_noticia','Título')
              ->display_as('texto_noticia','Texto');
-        
-        $crud->set_field_upload('file_url','assets/uploads/files');
         
         $output = $crud->render();
         return($output);
