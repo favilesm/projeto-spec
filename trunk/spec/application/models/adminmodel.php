@@ -25,13 +25,6 @@ class AdminModel extends CI_Model {
         return($output);
     }
     
-    function encriptasenha($post_array, $primary_key = null)
-    {
-        $this->load->helper('security');
-        $post_array['senha'] = do_hash($post_array['senha'], 'md5');
-        return $post_array;
-    }
-    
     function crudAdmin($id)
     {
         $crud = new grocery_CRUD();
@@ -41,7 +34,7 @@ class AdminModel extends CI_Model {
 		$crud->field_type('senha', 'password');
         $crud->required_fields('login', 'senha');
        
-        if ($id == 1)
+        if ($id != 0)
         {
             $crud->unset_add();
             $crud->unset_delete();
@@ -50,9 +43,25 @@ class AdminModel extends CI_Model {
 
         $crud->callback_before_insert(array($this,'encriptasenha'));
         $crud->callback_before_update(array($this,'encriptasenha'));
+        $crud->callback_before_delete(array($this, 'crudAdminDelete'));
 
         $output = $crud->render();
         return($output);
+    }
+    
+    function encriptasenha($post_array, $primary_key = null)
+    {
+        $this->load->helper('security');
+        $post_array['senha'] = do_hash($post_array['senha'], 'md5');
+        return $post_array;
+    }
+    
+    function crudAdminDelete($primary_key)
+    {
+        $this->db->where('administrador_administrador_id', $primary_key);
+        $this->db->update('mensagem', array('administrador_administrador_id' => 0));
+        
+        return true;
     }
     
     function crudBlog()
@@ -215,6 +224,7 @@ class AdminModel extends CI_Model {
         $crud->where('noticia_noticia_id', $noticia_id);
         
         $crud->callback_insert(array($this, 'crudNoticiaAnexoInsert'));
+        $crud->callback_before_delete(array($this, 'crudNoticiaAnexoBeforeDelete'));
         
         $output = $crud->render();
         return($output);
@@ -224,6 +234,14 @@ class AdminModel extends CI_Model {
     {
         $post_array['noticia_noticia_id'] = $this->uri->segment('3');
         return $this->db->insert('arquivos', $post_array);
+    }
+    
+    function crudNoticiaAnexoBeforeDelete($primary_key)
+    {
+        unlink(
+            'assets/uploads/files/noticiaAnexo/'.
+            $this->db->get_where('arquivos', array('arquivos_id' => $primary_key))->row()->arquivo
+        );
     }
     
     function crudPrograma($id='')
@@ -250,28 +268,24 @@ class AdminModel extends CI_Model {
         $crud->set_table('mensagem');
         $crud->set_subject('Mensagem');
                
-        $crud->set_relation('prefeitura_prefeitura_id','prefeitura','prefeito_prefeito_id');
+        $crud->set_relation('prefeitura_prefeitura_id','prefeitura','municipio');
         $crud->set_relation('administrador_administrador_id','administrador','login');
         
+        $crud->columns('titulo_mensagem', 'texto_mensagem', 'administrador_administrador_id', 'prefeitura_prefeitura_id');
         $crud->fields('titulo_mensagem', 'texto_mensagem', 'prefeitura_prefeitura_id');
         $crud->required_fields('titulo_mensagem','texto_mensagem','prefeitura_prefeitura_id');
         
-
         $crud->display_as('titulo_mensagem','Título');
         $crud->display_as('texto_mensagem','Texto');
         $crud->display_as('prefeitura_prefeitura_id','Destinatário');
         $crud->display_as('administrador_administrador_id','Remetente');
-
-        $crud->unset_add_fields('mensagem_id','administrador_administrador_id');
-        $crud->unset_edit_fields('mensagem_id', 'prefeitura_prefeitura_id','administrador_administrador_id');
-        
-              
         
         // impede administradores normais de ver a coluna de remetente
         if ($this->session->userdata('id') != 0) {
             $crud->where('administrador_administrador_id', $this->session->userdata('id'));
             $crud->columns('titulo_mensagem', 'texto_mensagem', 'prefeitura_prefeitura_id');
         }
+        
         $crud->callback_insert(array($this, 'crudMensagemInsert'));
 
         $output = $crud->render();
