@@ -87,8 +87,6 @@ class AdminModel extends CI_Model {
 		$crud->fields('municipio','endereco','cnpj','num_habitantes','fax','uf','email_prefeitura','login','senha');
 		$crud->columns('municipio','endereco','cnpj','num_habitantes','fax','uf','email_prefeitura','login','senha');
 		$crud->required_fields('municipio','endereco','cnpj','num_habitantes','fax','uf','email_prefeitura','login','senha');
-        //$crud->unset_add_fields('quantidade_secretario','ativada','ufmunicipio', 'id_uf', 'prefeito_prefeito_id');
-        //$crud->unset_edit_fields('quantidade_secretario','ativada','ufmunicipio','id_uf', 'prefeito_prefeito_id');
 		$crud->set_relation('uf', 'uf', 'nome');
 			
 		
@@ -168,7 +166,7 @@ class AdminModel extends CI_Model {
         $crud->columns('nome_prefeito', 'celular', 'cpf', 'data_nascimento', 'email_prefeito');
         $crud->fields('nome_prefeito', 'celular', 'cpf', 'data_nascimento', 'email_prefeito');
         $crud->where('prefeitura_prefeitura_id', $id);
-        
+        $crud->required_fields('nome_prefeito', 'celular', 'cpf', 'data_nascimento', 'email_prefeito');
         $crud->callback_insert(array($this,'crudPrefeitoInsert'));
         
         $output = $crud->render();
