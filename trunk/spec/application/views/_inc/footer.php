@@ -6,7 +6,7 @@
                     </div>
                     <div class="logo_footer">
                         <a href="http://www.cjr.org.br">
-                            <img src="<?=base_url()?>public/css/logo_cjr_footer.png" alt="CJR">
+                            <img src="<?php echo base_url() ?>public/css/logo_cjr_footer.png" alt="CJR">
                         </a>
                     </div>
                 </div>
