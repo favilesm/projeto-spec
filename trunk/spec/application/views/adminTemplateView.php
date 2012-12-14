@@ -15,15 +15,16 @@ foreach($css_files as $file): ?>
 </head>
 <body>
 <!-- Beginning header -->
-    <div id="menu_admin">
-        <a href='<?php echo site_url('administrador')?>'>Administradores</a> | 
-        <a href='<?php echo site_url('administrador/dica')?>'>Dicas</a> |
-        <a href='<?php echo site_url('administrador/noticia')?>'>Notícias</a> |
-        <a href='<?php echo site_url('administrador/blog')?>'>Blog</a> |
-        <a href='<?php echo site_url('administrador/prefeitura')?>'>Prefeitura</a> |
-        <a href='<?php echo site_url('administrador/programa')?>'>Programa do governo</a> |
-        <a href='<?php echo site_url('administrador/mensagem')?>'>Mensagem a um usuário</a> | 
-        <a href='<?php echo site_url('login/logout')?>'>Sair</a>
+    <div id="main_menu">
+        <ul class="menu">
+            <li class="item"><a href='<?php echo site_url('administrador')?>'>Administradores</a></li>
+            <li class="item"><a href='<?php echo site_url('administrador/dica')?>'>Dicas</a></li>
+            <li class="item"><a href='<?php echo site_url('administrador/noticia')?>'>Notícias</a></li>
+            <li class="item"><a href='<?php echo site_url('administrador/blog')?>'>Blog</a></li>
+            <li class="item"><a href='<?php echo site_url('administrador/prefeitura')?>'>Prefeitura</a></li>
+            <li class="item"><a href='<?php echo site_url('administrador/programa')?>'>Programa do governo</a></li>
+            <li class="item"><a href='<?php echo site_url('administrador/mensagem')?>'>Mensagem a um usuário</a></li>
+            <li class="item"><a href='<?php echo site_url('login/logout')?>'>Sair</a></li>
 
     </div>
 
@@ -50,6 +51,7 @@ foreach($css_files as $file): ?>
         ?>
  
     </div>
+    <div style='height:130px;'></div>
 <!-- Beginning footer -->
 
 <!-- End of Footer -->
