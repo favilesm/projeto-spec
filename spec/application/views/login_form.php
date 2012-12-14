@@ -12,5 +12,5 @@
             ?>
         </div>
     </div>
-    <div id ="borda_bottom_dente"></div>    81441332
+    <div id ="borda_bottom_dente"></div>  
 <?php include("_inc/footer.php"); ?>
