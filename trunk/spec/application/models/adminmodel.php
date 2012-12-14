@@ -43,7 +43,7 @@ class AdminModel extends CI_Model {
 
         $crud->callback_before_insert(array($this,'encriptasenha'));
         $crud->callback_before_update(array($this,'encriptasenha'));
-        $crud->callback_before_delete(array($this, 'crudAdminDelete'));
+        $crud->callback_before_delete(array($this, 'crudAdminBeforeDelete'));
 
         $output = $crud->render();
         return($output);
@@ -56,7 +56,7 @@ class AdminModel extends CI_Model {
         return $post_array;
     }
     
-    function crudAdminDelete($primary_key)
+    function crudAdminBeforeDelete($primary_key)
     {
         $this->db->where('administrador_administrador_id', $primary_key);
         $this->db->update('mensagem', array('administrador_administrador_id' => 0));
@@ -242,6 +242,7 @@ class AdminModel extends CI_Model {
             'assets/uploads/files/noticiaAnexo/'.
             $this->db->get_where('arquivos', array('arquivos_id' => $primary_key))->row()->arquivo
         );
+        return true;
     }
     
     function crudPrograma($id='')
