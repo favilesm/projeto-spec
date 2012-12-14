@@ -25,7 +25,7 @@ foreach($css_files as $file): ?>
             <li class="item"><a href='<?php echo site_url('administrador/programa')?>'>Programa do governo</a></li>
             <li class="item"><a href='<?php echo site_url('administrador/mensagem')?>'>Mensagem a um usuário</a></li>
             <li class="item"><a href='<?php echo site_url('login/logout')?>'>Sair</a></li>
-
+        </ul>
     </div>
 
     <?php
