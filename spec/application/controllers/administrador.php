@@ -170,13 +170,14 @@ class Administrador extends CI_Controller {
             $this->load->model('adminModel');
             $output = $this->adminModel->crudMensagem($this->verificaAdmin());
 
-            $this->load->view('_inc/header_open');
+            /*$this->load->view('_inc/header_open');
             $this->load->view('_inc/header_grocery', $output);
             $this->load->view('_inc/header');
             $this->load->view('_inc/header_close');
             $this->load->view('admin/top');
             $this->load->view('_inc/grocery', $output);
-            $this->load->view('_inc/footer');
+            $this->load->view('_inc/footer');*/
+			$this->_chamaTemplate($output);
         }
         else
         {
