@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="public/css/estilo.css" type="text/css" />
-</head>
-
 <?php include("_inc/header.php"); ?>
     
-    
+    <div id ="borda_top_dente"></div>
     <div id ="borda_login">
         <div class ="login_form">
             <h1>Login!</h1>
@@ -19,4 +12,5 @@
             ?>
         </div>
     </div>
+    <div id ="borda_bottom_dente"></div>    
 <?php include("_inc/footer.php"); ?>

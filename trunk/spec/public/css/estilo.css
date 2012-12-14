@@ -1,0 +1,152 @@
+/* CSS Grocery-Crud */
+
+a {
+    color: blue;
+    text-decoration: none;
+    font-size: 14px;
+}
+a:hover
+{
+    text-decoration: underline;
+}
+
+/* CSS Grocery-Crud */
+
+#menu_admin{
+    position:relative;
+    width: 920px;
+    height: 20px;
+    margin: 0 auto;
+    margin-bottom: -21px;
+    margin-top: 30px;
+    
+    
+}
+
+
+body{
+    font-family: Arial;
+    font-size: 14px;
+    width: 100%;
+    height: 100%;
+    overflow: scroll-y;
+    background-image:url('background_spec.png');
+    margin: 0;
+    padding: 0;
+}
+#tudo{
+    position: relative;
+    min-height: 100%;
+    
+    
+    
+}
+#borda_top_dente{
+    position:relative;
+    background: url('topTooth.png') repeat-x left top;
+    width: 920px;
+    height: 20px;
+    margin: 0 auto;
+    margin-bottom: -21px;
+    margin-top: 30px;
+}
+#borda_bottom_dente{
+    position:relative;
+    background: url('bottomTooth.png') repeat-x left top;
+    width: 920px;
+    height: 20px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+}
+#borda_login{
+    
+    width: 920px;
+    height: 120px;
+    margin: auto;
+    background-color: white;
+}
+
+.login_form{
+    width: 400px;
+    height: auto;
+    margin: auto;
+    
+    background-color: #ffffff;
+    
+}
+.header{
+    position:relative;
+       
+    background: #263974;
+    background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255, 255, 255, 1)), color-stop(100%,rgba(255, 255, 255, 0)));
+    background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0%,rgba(255, 255, 255, 0) 100%);
+    background-image: -o-linear-gradient(top, rgba(255, 255, 255, 1) 0%,rgba(255, 255, 255, 0) 100%);
+    background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 1) 0%,rgba(255, 255, 255, 0) 100%);
+    background-image: linear-gradient(top, rgba(255, 255, 255, 1) 0%,rgba(255, 255, 255, 0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 );
+
+    width: 920px;
+    height: 130px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px; 
+    margin: 0 auto;
+    margin-top: 46px;
+}
+#footer{
+    position:absolute;
+    background-color: #434343;
+    width: 100%;
+    height: 94px;
+    margin-bottom: -94px;
+    
+    bottom: 0;
+}
+.info{
+    width: 920px;
+    margin: 0 auto;
+    padding: 0 0 30px;
+}
+.endereco{
+    width: 730px;
+    margin-right: 20px;
+    padding-top: 20px;
+    float: left;
+    color: white;
+}
+.logo_header{
+    background-color: rgba(255, 255, 255, 0.8);
+    height: 100px;
+    width: 330px;
+    margin-top: -35px;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 35px;
+}
+
+.logo_header a {
+    margin: 0;
+    line-height: 1.6em;
+    margin-top: -10px;
+float: left;
+}
+
+.logo_footer{
+    background: none;
+    float:right;
+    padding-top: 20px;
+}
+.login_invalido{
+    width: 920px;
+    height: 120px;
+    margin: auto;
+    background-color: white;
+    
+}
+html{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    
+}
