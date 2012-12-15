@@ -23,20 +23,24 @@
 				<div class="main_login">
 					<?php
 						echo form_open('login/validar');?>
-						<div class='label_login'>
-							
+                                        <div class='login_pass'>
+						<div class='label_login_senha'>
+                                                        <label for="ilogin">Login</label>
+                                                </div>
+						<div class='form_login_password'>
+							<input id="ilogin" type="login" name="login" value="" style="height: 32px;"/>
 						</div>
-						<div class='form_login'>
-							<input type="login" name="login" value="" style="height: 32px;"/>
+                                        </div>
+                                        <div class='login_pass'>
+						<div class='label_login_senha'>
+							<label for="isenha">Senha</label>
 						</div>
-						<div class='label_senha'>
-							<label for="senha">Senha</label>
+						<div class='form_login_password'>
+							<input id="isenha" type="password" name="senha" value="" style="height: 32px;"/>
 						</div>
-						<div class='form_password'>
-							<input type="password" name="senha" value="" style="height: 32px;"/>
-						</div>
+                                        </div>
 						<div class='form_submit'>
-							<input type="submit" name="submit" value="Entrar" style="height: 40px; margin-left: -6px; color: white; font-weight: 700; width: 175px; background-color: #9AB4CB; font-size: 17px;"/>
+							<input type="submit" name="submit" value="Entrar"/>
 						</div>
 				</div>
             </div>
