@@ -14,8 +14,11 @@ class PrefeituraModel extends CI_Model {
 	
 	function getDicas()
 	{
-		$this->db->where('prefeitura_prefeitura_id', $this->session->userdata('id'));
-		$dados['dicas'] = $this->db->get('dica')->result();
+		$dados['dicas'] = $this->db->query(
+			'SELECT * FROM dica INNER JOIN prefeitura_x_dica ON '.
+			'dica.dica_id=prefeitura_x_dica.dica_dica_id WHERE '.
+			'prefeitura_x_dica.prefeitura_prefeitura_id='.$this->session->userdata('id')
+		)->result();
 		return $dados;
 	}
 	

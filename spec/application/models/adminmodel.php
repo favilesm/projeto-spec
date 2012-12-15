@@ -385,7 +385,7 @@ class AdminModel extends CI_Model {
         $crud->set_table('mensagem');
         $crud->set_subject('Mensagem');
                
-        $crud->set_relation('prefeitura_prefeitura_id','prefeitura','municipio');
+        $crud->set_relation('prefeitura_prefeitura_id','prefeitura','ufmunicipio');
         $crud->set_relation('administrador_administrador_id','administrador','login');
         
         $crud->columns('titulo_mensagem', 'texto_mensagem', 'administrador_administrador_id', 'prefeitura_prefeitura_id');
