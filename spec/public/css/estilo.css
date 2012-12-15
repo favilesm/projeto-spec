@@ -327,9 +327,21 @@ div#novasenha{
     text-align: center;
 }
 
-div#mensagem{
+div#novasenha table{
+    text-align: left;
+    margin: 0 auto;
+}
+
+div.mensagem {
     text-align: center;
     color: white;
-    background-color: green;
     padding: 20px;
+}
+
+div#erro {
+    background: #BE0000;
+}
+
+div#mensagem {
+    background: green;
 }
