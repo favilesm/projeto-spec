@@ -106,6 +106,12 @@ body{
     margin: 0;
     padding: 0;
 }
+
+#site{
+    width: 920px;
+    margin: 0 auto;
+}
+
 #tudo{
     position: relative;
     min-height: 100%;

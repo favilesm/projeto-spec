@@ -14,6 +14,7 @@ foreach($css_files as $file): ?>
  
 </head>
 <body>
+    <div id="site">
 <!-- Beginning header -->
     <div id="nav">
         <div id="main_menu">
@@ -53,6 +54,7 @@ foreach($css_files as $file): ?>
  
     </div>
     <div style='height:130px;'></div>
+    </div>
 <!-- Beginning footer -->
 
 <!-- End of Footer -->

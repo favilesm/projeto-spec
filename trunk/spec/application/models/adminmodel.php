@@ -199,19 +199,35 @@ class AdminModel extends CI_Model {
         $crud->display_as('titulo_noticia','Título')
              ->display_as('texto_noticia','Texto');
         
+        $crud->callback_before_delete(array($this, 'crudNoticiaBeforeDelete'));
+        
         $output = $crud->render();
         return($output);
     }    
+    
+    function crudNoticiaBeforeDelete($primary_key)
+    {
+        // seleciona os nomes dos arquivos da noticia
+        $files = $this->db->query(
+            'SELECT arquivo FROM arquivos WHERE noticia_noticia_id='.$primary_key
+        )->result();
+        
+        // apaga os registros dos arquivos do banco
+        $this->db->delete('arquivos', array('noticia_noticia_id' => $primary_key));
+        
+        // apaga os arquivos do servidor
+        foreach ($files as $file)
+            unlink('assets/uploads/files/noticiaAnexo/'.$file->arquivo);
+        
+        return true;
+    }
     
     function crudNoticiaAnexo($noticia_id)
     {
         $crud = new grocery_CRUD();
         
-        $this->db->where('noticia_id', $noticia_id);
         $crud->set_table('arquivos');
         $crud->set_subject('arquivo à notícia '.$this->db->get('noticia')->row()->titulo_noticia);
-        
-        $crud->set_relation('noticia_noticia_id','noticia','titulo_noticia');
         
         $crud->columns('arquivo');
         $crud->fields('arquivo');
