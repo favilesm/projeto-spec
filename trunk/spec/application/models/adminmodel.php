@@ -412,7 +412,25 @@ class AdminModel extends CI_Model {
     function crudMensagemInsert($post_array)
     {
         $post_array['administrador_administrador_id'] = $this->session->userdata('id');
+        
+        $config['charset'] = 'utf-8';
+        $config['wordwrap'] = TRUE;
+        $config['mailtype'] = 'html';
+        $this->email->initialize($config);
+        $prefeitura = $this->getEmail($post_array['prefeitura_prefeitura_id']);
+        $this->email->from('nao-existe@cjr.org.br', 'Sistema SPEC');
+        
+        $this->email->to($prefeitura['email_prefeitura'], 'pedro'); 
+        $this->email->subject($post_array['titulo_mensagem']);
+        $this->email->message($post_array['texto_mensagem']."Esse é um e-mail automático, não responda esse e-mail.");	
+        $this->email->send(); 
         return $this->db->insert('mensagem', $post_array);
+    }
+    function getEmail($id){
+        $this->db->from('prefeitura');
+        $this->db->where('prefeitura_id', $id);
+        $query = $this->db->get();
+        return $query->num_rows(); 
     }
     
     function checaQtd($id)
