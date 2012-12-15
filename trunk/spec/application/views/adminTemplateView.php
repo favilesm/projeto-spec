@@ -32,7 +32,7 @@ foreach($css_files as $file): ?>
     </div>
     
     <?php if ($this->session->flashdata('mensagem')) : ?>
-    <div id="mensagem">
+    <div id="mensagem" class="mensagem">
         <?php echo $this->session->flashdata('mensagem'); ?>
     </div>
     <?php endif; ?>

@@ -55,4 +55,15 @@ class PrefeituraModel extends CI_Model {
 		
 		return $crud->render();
 	}
+	
+	function alteraSenha($post_array)
+	{
+		$senha_atual = $this->db->get_where('prefeitura', array('prefeitura_id' => $this->session->userdata('id')))->row()->senha;
+		if ($senha_atual != md5($post_array['senhavelha']) || $post_array['senha'] != $post_array['senharepete'])
+			return false;
+		
+		$this->db->where('prefeitura_id', $this->session->userdata('id'));
+		$this->db->update('prefeitura', array('senha' => md5($post_array['senha'])));
+		return true;
+	}
 }
