@@ -154,20 +154,19 @@ body{
     float: left;
     clear: both;
     display: inline;
+     border-bottom-right-radius: 7px;
+    border-top-right-radius: 7px;
 }
 
 .faixa{
     color: white;
     padding: 6px;
-    background: url('../images/ribbonShadow.png') no-repeat left top;
-    margin-left: -40px;
+    background: url('ribbonShadow.png') no-repeat left top;
+    background-position-x: 20px;
+    margin-left: -60px;
     padding-left: 20px;
     margin-bottom: 20px;
-    border-bottom-right-radius: 7px;
-    /*VER BORDA*/
-
-    
-    
+   
 }
 .titulo{
     padding: 20px;
