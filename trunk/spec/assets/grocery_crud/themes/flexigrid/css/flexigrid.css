@@ -8,14 +8,14 @@ table th
 
 /* CSS Document */
 .flexigrid {
-        width: 920px !important;
+        width: 922px !important;
         margin: 0 auto;
-        border-radius: 20px;
-	font-family:Arial,Helvetica,sans-serif;
+        font-family:Arial,Helvetica,sans-serif;
 	font-size:11px;
 	position:relative;
 	border:0px solid #eee;
 	overflow:hidden;
+        /* margin-top: -20px;*/
 	
 }
 .flexigrid.crud-form
