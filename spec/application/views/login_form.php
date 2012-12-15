@@ -5,13 +5,26 @@
         <div class="faixa"></div>
         <div id ="borda_login">
             <div class ="login_form">
-                <h1>Login</h1>
-                <?php
-                    echo form_open('login/validar');
-                    echo form_input('login', 'Login');
-                    echo form_password('senha', 'Senha');
-                    echo form_submit('submit', 'Login');
-                ?>
+                <h1></h1>
+				<div class="main_login">
+					<?php
+						echo form_open('login/validar');?>
+						<div class='label_login'>
+							<label for="login">Login</label>
+						</div>
+						<div class='form_login'>
+							<input type="login" name="login" value="" style="height: 32px;"/>
+						</div>
+						<div class='label_senha'>
+							<label for="senha">Senha</label>
+						</div>
+						<div class='form_password'>
+							<input type="password" name="senha" value="" style="height: 32px;"/>
+						</div>
+						<div class='form_submit'>
+							<input type="submit" name="submit" value="Entrar" style="height: 40px; margin-left: -6px; color: white; font-weight: 700; width: 175px; background-color: #9AB4CB; font-size: 17px;"/>
+						</div>
+				</div>
             </div>
             <div class="contact_image">
                     <img src="<?php echo base_url() ?>public/css/logo-contato.png" alt="Contato">

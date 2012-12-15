@@ -276,3 +276,47 @@ html{
     font-size: 13pt;
     background-color: #ffffff;
 }
+
+.main_login{
+	background-color: #26468E;
+	padding: 15px;
+	
+	margin: 0px;
+	margin-left: 40px;
+	
+}
+
+.label_login{
+	color: white;
+    font-size: 17px;
+    font-weight: 700;
+    margin-left: 7px;
+    margin-top: 5px;
+    position: absolute;
+}
+
+.form_login{
+	margin-left: 137px;
+	margin-bottom: 15px;
+	
+}
+
+.label_senha{
+	color: white;
+    font-size: 17px;
+    font-weight: 700;
+    margin-left: 7px;
+    margin-top: 5px;
+    position: absolute;
+}
+
+.form_password{
+	margin-left: 137px;
+	margin-bottom: 15px;
+	
+}
+
+.form_submit{
+	margin-left: 142px;
+	
+}
