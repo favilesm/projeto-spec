@@ -7,7 +7,7 @@
 <!-- Beginning header -->
     <div id="nav">
         <div id="main_menu">
-            <ul id="menu">
+            <ul class="menu">
                 <li class="item1"><a href='<?php echo site_url('administrador')?>'>Administradores</a></li>
                 <li class="item2"><a href='<?php echo site_url('administrador/dica')?>'>Dicas</a></li>
                 <li class="item3"><a href='<?php echo site_url('administrador/noticia')?>'>Notícias</a></li>
@@ -33,19 +33,41 @@
     ?>
 <!-- End of header-->
 
-    <div style='height:20px;'></div>  
-    <div id="novasenha">
-        <h1><?php echo ($tipo == 'admin') ? 'Alterando senha do administrador:' : 'Alterando senha da prefeitura de:'; ?></h1>
-        <h2><?php echo $nome; ?></h2>
+    <div id="centro">
+        <div class ="borda_top_dente"></div>
         
-        <?php echo form_open(current_url()); ?>
-            <label for="senha">Nova senha:</label> <input id="senha" type="password" name="senha" />
-            <br />
-            <input type="submit" value="Alterar" />
-        <?php echo form_close(); ?>
+        <div class="cabecalho">
+            <div class="centro_faixa">
+                <div class="centro_faixa2">
+                    <div id="espaco_faixa">
+                        <div class="faixa">
+                            <div class="titulo">
+                                <h1><?php echo ($tipo == 'admin') ? 'Alterando senha do administrador:' : 'Alterando senha da prefeitura de:'; ?>             <?php echo $nome; ?></h1>
+                            </div>            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+        <div id="novasenha">
+                <?php echo form_open(current_url()); ?>
+                <label for="senha">Nova senha:</label> <input id="senha" type="password" name="senha" />
+                <br />
+                <input type="submit" value="Alterar" />
+                <?php echo form_close(); ?>
+            </div>
+                
+        <div class ="borda_bottom_dente"></div>
     </div>
-    <div style='height:130px;'></div>
-    </div>
+
+
+
+
+        
+        
+        
+        
+    
 <!-- Beginning footer -->
 
 <!-- End of Footer -->

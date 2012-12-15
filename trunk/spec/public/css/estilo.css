@@ -321,14 +321,15 @@ html{
 .main_login{
 	background-color: #26468E;
 	padding: 15px;
-	
+	border-right: 7px;
 	margin: 0px;
 	margin-left: 40px;
+        
 	
 }
 
 .label_login{
-	color: white;
+color: white;
     font-size: 17px;
     font-weight: 700;
     margin-left: 7px;
@@ -363,9 +364,12 @@ html{
 }
 
 div#novasenha{
+    
     margin: 0 auto;
-    width: 500px;
+    width: auto;
     text-align: center;
+    background-color: white;
+    padding-bottom: 30px;
 }
 
 div#novasenha table{
