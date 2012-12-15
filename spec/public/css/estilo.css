@@ -99,6 +99,13 @@ body{
     margin: 0 auto;    
     padding-bottom: 50px;
     
+    
+}
+.fundo_centro{
+    width: 920px;
+       margin: 0 auto;    
+    padding-bottom: 50px;
+    background-color: white;
 }
 
 .borda_top_dente{
