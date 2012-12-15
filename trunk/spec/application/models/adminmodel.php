@@ -32,7 +32,6 @@ class AdminModel extends CI_Model {
         $crud->set_subject('Administrador');
         $crud->columns('login');
 		$crud->field_type('senha', 'password');
-        $crud->fields('login', 'senha');
         $crud->required_fields('login', 'senha');
        
         if ($id != 0)
@@ -41,7 +40,9 @@ class AdminModel extends CI_Model {
             $crud->unset_delete();
             $crud->unset_edit();
         }
-
+        
+        //$crud->unset_edit_fields('senha');
+        
         $crud->callback_before_insert(array($this,'crudAdminBeforeInsert'));
         $crud->callback_before_update(array($this,'crudAdminBeforeUpdate'));
         $crud->callback_before_delete(array($this, 'crudAdminBeforeDelete'));
@@ -119,6 +120,7 @@ class AdminModel extends CI_Model {
         $crud->callback_before_delete(array($this,'crudPrefeituraBeforeDelete'));
         
         $crud->callback_after_insert(array($this,'crudPrefeituraAfterInsert'));
+        $crud->callback_after_update(array($this,'crudPrefeituraAfterInsert'));
 		
         $output = $crud->render();
         return($output);
