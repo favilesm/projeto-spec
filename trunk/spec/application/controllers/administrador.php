@@ -21,6 +21,31 @@ class Administrador extends CI_Controller {
         }
     }
     
+    function adminsenha($id)
+    {
+        if (    $this->session->userdata('logado') == true  )
+        {
+            if ($this->session->userdata('id') != 0)
+                redirect('administrador');
+            
+            $this->load->model('adminModel');
+            
+            if (count($_POST)) {
+                $this->adminModel->alteraSenhaAdmin($id, $_POST['senha']);
+                $this->session->set_flashdata('mensagem', 'Senha alterada com sucesso!');
+                redirect('administrador');
+            }
+            
+            $dado['nome'] = $this->adminModel->getNomeAdmin($id);
+            $dado['tipo'] = 'admin';
+            $this->load->view('adminTemplateSenha.php', $dado);
+        }
+        else
+        {
+            redirect('login');
+        }
+    }
+    
     function dica()
     {
         if (    $this->session->userdata('logado') == true  )
@@ -99,6 +124,28 @@ class Administrador extends CI_Controller {
             $output = $this->adminModel->crudPrefeitura();
             //if( $this->session->userdata('erro' ) $output['erro'] = 'insert';
             $this->_chamaTemplate($output);
+        }
+        else
+        {
+            redirect('login');
+        }
+    }
+    
+    function prefeiturasenha($prefeitura_id)
+    {
+        if (    $this->session->userdata('logado') == true  )
+        {
+            $this->load->model('adminModel');
+            
+            if (count($_POST)) {
+                $this->adminModel->alteraSenhaPrefeitura($prefeitura_id, $_POST['senha']);
+                $this->session->set_flashdata('mensagem', 'Senha alterada com sucesso!');
+                redirect('administrador/prefeitura');
+            }
+            
+            $dado['nome'] = $this->adminModel->getNomePrefeitura($prefeitura_id);
+            $dado['tipo'] = 'prefeitura';
+            $this->load->view('adminTemplateSenha.php', $dado);
         }
         else
         {

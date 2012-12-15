@@ -1,17 +1,6 @@
 <?php include("_inc/header.php"); ?>
 <!--FINAL HEADER PERSONALIZADO -->
 
-
-<?php 
-foreach($css_files as $file): ?>
-    <link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
- 
-<?php endforeach; ?>
-<?php foreach($js_files as $file): ?>
- 
-    <script src="<?php echo $file; ?>"></script>
-<?php endforeach; ?>
- 
 </head>
 <body>
     <div id="site">
@@ -45,20 +34,15 @@ foreach($css_files as $file): ?>
 <!-- End of header-->
 
     <div style='height:20px;'></div>  
-    <div>
-        <?php 
-  
-        if (isset($erro))
-        {
-            echo "ERRO AO INSERIR!!!.";
-        }
-        else
-        {
-            echo $output; 
-        }
- 
-        ?>
- 
+    <div id="novasenha">
+        <h1><?php echo ($tipo == 'admin') ? 'Alterando senha do administrador:' : 'Alterando senha da prefeitura de:'; ?></h1>
+        <h2><?php echo $nome; ?></h2>
+        
+        <?php echo form_open(current_url()); ?>
+            <label for="senha">Nova senha:</label> <input id="senha" type="password" name="senha" />
+            <br />
+            <input type="submit" value="Alterar" />
+        <?php echo form_close(); ?>
     </div>
     <div style='height:130px;'></div>
     </div>
