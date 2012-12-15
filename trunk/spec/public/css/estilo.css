@@ -318,49 +318,50 @@ html{
     background-color: #ffffff;
 }
 
+
 .main_login{
-	background-color: #26468E;
-	padding: 15px;
-	border-right: 7px;
-	margin: 0px;
-	margin-left: 40px;
-        
-	
+	background-color: #26468E;	
 }
 
-.label_login{
-color: white;
+.label_login_senha{
+    color: white;
     font-size: 17px;
     font-weight: 700;
-    margin-left: 7px;
-    margin-top: 5px;
-    position: absolute;
+    float: left;
+    margin-left: 50px;
+    margin-top: 8px;
 }
 
-.form_login{
-	margin-left: 137px;
-	margin-bottom: 15px;
-	
+.login_pass {
+    clear: both;
+    width: 350px;
+    height: 50px;
+    margin: 0 auto;
+    padding-top: 10px;
 }
 
-.label_senha{
-	color: white;
-    font-size: 17px;
-    font-weight: 700;
-    margin-left: 7px;
-    margin-top: 5px;
-    position: absolute;
-}
-
-.form_password{
-	margin-left: 137px;
-	margin-bottom: 15px;
-	
+.form_login_password{
+    margin-left: 120px;
 }
 
 .form_submit{
-	margin-left: 142px;
-	
+    clear: both;
+    margin: 10px;
+    padding-bottom: 10px;
+}
+
+.form_submit > input {    
+    border-radius: 4px;
+    height: 40px;
+    color: white;
+    font-weight: 700;
+    width: 150px;
+    background-color: #9AB4CB;
+    font-size: 17px;
+}
+
+.form_submit > input:hover {
+    background-color: #6FB4CB;
 }
 
 div#novasenha{
