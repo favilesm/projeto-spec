@@ -34,31 +34,36 @@ class AdminModel extends CI_Model {
 		$crud->field_type('senha', 'password');
         $crud->required_fields('login', 'senha');
        
-        if ($id != 0)
+        if ($id == 0)
+            $crud->add_action('Alterar senha',base_url('/assets/uploads/key.png'),'administrador/adminsenha');
+        else
         {
             $crud->unset_add();
             $crud->unset_delete();
             $crud->unset_edit();
         }
         
-        //$crud->unset_edit_fields('senha');
+        $crud->unset_edit_fields('senha');
         
         $crud->callback_before_insert(array($this,'crudAdminBeforeInsert'));
-        $crud->callback_before_update(array($this,'crudAdminBeforeUpdate'));
         $crud->callback_before_delete(array($this, 'crudAdminBeforeDelete'));
-
+        
         $output = $crud->render();
         return($output);
     }
     
-    function crudAdminBeforeInsert($post_array)
+    function getNomeAdmin($id)
     {
-        $this->load->helper('security');
-        $post_array['senha'] = do_hash($post_array['senha'], 'md5');
-        return $post_array;
+        return $this->db->get_where('administrador', array('administrador_id' => $id))->row()->login;
     }
     
-    function crudAdminBeforeUpdate($post_array, $primary_key)
+    function alteraSenhaAdmin($id, $senha)
+    {
+        $this->db->where('administrador_id', $id);
+        $this->db->update('administrador', array('senha' => md5($senha)));
+    }
+    
+    function crudAdminBeforeInsert($post_array)
     {
         $this->load->helper('security');
         $post_array['senha'] = do_hash($post_array['senha'], 'md5');
@@ -98,9 +103,13 @@ class AdminModel extends CI_Model {
         $crud->add_action('Prefeito',base_url('/assets/uploads/mayor.png'),'administrador/prefeito');
         $crud->add_action('Secretarios', base_url('/assets/uploads/secretario.png'),'administrador/secretario');
         $crud->add_action('Telefone', base_url('/assets/uploads/telefone.png'),'administrador/telefone');
+        $crud->add_action('Alterar senha',base_url('/assets/uploads/key.png'),'administrador/prefeiturasenha');
+        
         $crud->columns('municipio','endereco','cnpj','num_habitantes','fax','uf','email_prefeitura','login','ativada', 'quantidade_secretario');
-		$crud->fields('municipio','endereco','cnpj','num_habitantes','fax','uf','email_prefeitura','login','senha');
-        $crud->required_fields('login','senha','municipio','endereco','cnpj','num_habitantes','fax','uf','email_prefeitura');
+        $crud->required_fields('municipio','endereco','cnpj','num_habitantes','fax','uf','email_prefeitura','login','senha');
+        $crud->unset_add_fields('ativada', 'quantidade_secretario', 'ufmunicipio');
+        $crud->unset_edit_fields('senha','ativada', 'quantidade_secretario', 'ufmunicipio');
+        
 		$crud->set_relation('uf', 'uf', 'nome');
         $crud->field_type('senha', 'password');
 		
@@ -116,7 +125,6 @@ class AdminModel extends CI_Model {
              ->display_as('quantidade_secretario','Quantidade de secretários');
        
         $crud->callback_before_insert(array($this,'crudPrefeituraBeforeInsert'));
-        $crud->callback_before_update(array($this,'crudPrefeituraBeforeUpdate'));
         $crud->callback_before_delete(array($this,'crudPrefeituraBeforeDelete'));
         
         $crud->callback_after_insert(array($this,'crudPrefeituraAfterInsert'));
@@ -126,14 +134,18 @@ class AdminModel extends CI_Model {
         return($output);
     }
     
-    function crudPrefeituraBeforeInsert($post_array)
+    function getNomePrefeitura($prefeitura_id)
     {
-        $this->load->helper('security');
-        $post_array['senha'] = do_hash($post_array['senha'], 'md5');
-        return $post_array;
+        return $this->db->get_where('prefeitura', array('prefeitura_id' => $prefeitura_id))->row()->ufmunicipio;
     }
     
-    function crudPrefeituraBeforeUpdate($post_array, $primary_key)
+    function alteraSenhaPrefeitura($prefeitura_id, $senha)
+    {
+        $this->db->where('prefeitura_id', $prefeitura_id);
+        $this->db->update('prefeitura', array('senha' => md5($senha)));
+    }
+    
+    function crudPrefeituraBeforeInsert($post_array)
     {
         $this->load->helper('security');
         $post_array['senha'] = do_hash($post_array['senha'], 'md5');

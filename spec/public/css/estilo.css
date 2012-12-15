@@ -320,3 +320,16 @@ html{
 	margin-left: 142px;
 	
 }
+
+div#novasenha{
+    margin: 0 auto;
+    width: 500px;
+    text-align: center;
+}
+
+div#mensagem{
+    text-align: center;
+    color: white;
+    background-color: green;
+    padding: 20px;
+}
