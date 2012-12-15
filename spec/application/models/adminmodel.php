@@ -416,6 +416,8 @@ class AdminModel extends CI_Model {
             $crud->columns('titulo_mensagem', 'texto_mensagem', 'prefeitura_prefeitura_id');
         }
         
+        $crud->order_by('mensagem_id', 'desc');
+        
         $crud->callback_insert(array($this, 'crudMensagemInsert'));
 
         $output = $crud->render();

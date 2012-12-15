@@ -21,7 +21,7 @@
     </div>
     
     <?php if ($this->session->flashdata('mensagem')) : ?>
-    <div id="mensagem" class="mensagem">
+    <div id="mensagem" class="aviso">
         <?php echo $this->session->flashdata('mensagem'); ?>
     </div>
     <?php endif; ?>
