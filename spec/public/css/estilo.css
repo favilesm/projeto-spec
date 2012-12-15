@@ -114,31 +114,39 @@ body{
 
 #tudo{
     position: relative;
-    min-height: 100%;
-    
-    
-    
+    min-height: 100%;    
 }
-#borda_top_dente{
+#centro{
+    width: 920px;
+    margin: 0 auto;    
+}
+
+.borda_top_dente{
     position:relative;
     background: url('topTooth.png') repeat-x left top;
-    width: 920px;
+    
     height: 20px;
-    margin: 0 auto;
+ 
     margin-bottom: -21px;
     margin-top: 30px;
 }
-#borda_bottom_dente{
+.borda_bottom_dente{
     position:relative;
     background: url('bottomTooth.png') repeat-x left top;
-    width: 920px;
+   
     height: 20px;
-    margin: 0 auto;
+   
     margin-bottom: 50px;
+}
+.faixa{
+    
+    
+    
+    
 }
 #borda_login{
     
-	text-align:center;
+    text-align:center;
     width: 920px;
     height: 380px;
     margin: auto;
