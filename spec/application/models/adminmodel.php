@@ -107,8 +107,8 @@ class AdminModel extends CI_Model {
         
         $crud->columns('municipio','endereco','cnpj','num_habitantes','fax','uf','email_prefeitura','login','ativada', 'quantidade_secretario');
         $crud->required_fields('municipio','endereco','cnpj','num_habitantes','fax','uf','email_prefeitura','login','senha');
-        $crud->unset_add_fields('ativada', 'quantidade_secretario', 'ufmunicipio', 'prefeito_prefeito_id', 'telefone');
-        $crud->unset_edit_fields('senha','ativada', 'quantidade_secretario', 'ufmunicipio', 'prefeito_prefeito_id', 'telefone');
+        $crud->unset_add_fields('ativada', 'quantidade_secretario', 'ufmunicipio');
+        $crud->unset_edit_fields('senha','ativada', 'quantidade_secretario', 'ufmunicipio');
         
 		$crud->set_relation('uf', 'uf', 'nome');
 		
