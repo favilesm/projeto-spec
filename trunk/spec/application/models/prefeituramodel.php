@@ -34,26 +34,22 @@ class PrefeituraModel extends CI_Model {
 		return $dados;
 	}
 	
-	function crudMensagem()
+	function getMensagens()
 	{
-		$crud = new grocery_CRUD();
-		
-		$crud->set_table('mensagem');
-		$crud->set_subject('Mensagem');
-		
-		$crud->columns('titulo_mensagem', 'texto_mensagem');
-		$crud->fields('titulo_mensagem', 'texto_mensagem');
-		$crud->required_fields('titulo_mensagem','texto_mensagem');
-		
-		$crud->display_as('titulo_mensagem','Título');
-		$crud->display_as('texto_mensagem','Texto');
-		
-		$crud->where('prefeitura_prefeitura_id', $this->session->userdata('id'));
-		
-		$crud->unset_edit();
-		$crud->unset_delete();
-		
-		return $crud->render();
+		$this->db->order_by('mensagem_id', 'desc');
+		$this->db->where('prefeitura_prefeitura_id', $this->session->userdata('id'));
+		$dados['mensagens'] = $this->db->get('mensagem')->result();
+		return $dados;
+	}
+	
+	function enviarMensagem($post_array)
+	{
+		$dados = array(
+			'titulo_mensagem' => $post_array['titulo'],
+			'texto_mensagem' => $post_array['texto'],
+			'prefeitura_prefeitura_id' => $this->session->userdata('id')
+		);
+		$this->db->insert('mensagem', $dados);
 	}
 	
 	function alteraSenha($post_array)

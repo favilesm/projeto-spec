@@ -93,14 +93,36 @@ class Prefeitura extends CI_Controller {
 	{
 		if (    $this->session->userdata('logado') == true  )
 		{
-			$output = $this->prefeituramodel->crudMensagem();
+			$mensagens = $this->prefeituramodel->getMensagens();
 			
 			$this->load->view('_inc/header_open');
-			$this->load->view('_inc/header_grocery', $output);
 			$this->load->view('_inc/header');
 			$this->load->view('_inc/header_close');
 			$this->load->view('prefeitura/top');
-			$this->load->view('_inc/grocery', $output);
+			$this->load->view('prefeitura/mensagens', $mensagens);
+			$this->load->view('_inc/footer');
+		}
+		else
+		{
+			redirect('login');
+		}
+	}
+	
+	function enviarmensagem()
+	{
+		if (    $this->session->userdata('logado') == true  )
+		{
+			if (count($_POST)) {
+				$this->prefeituramodel->enviarMensagem($_POST);
+				$this->session->set_flashdata('mensagem', 'Mensagem enviada com sucesso!');
+				redirect('prefeitura/mensagem');
+			}
+			
+			$this->load->view('_inc/header_open');
+			$this->load->view('_inc/header');
+			$this->load->view('_inc/header_close');
+			$this->load->view('prefeitura/top');
+			$this->load->view('prefeitura/enviar_mensagem');
 			$this->load->view('_inc/footer');
 		}
 		else

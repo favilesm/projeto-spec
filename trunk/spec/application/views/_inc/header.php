@@ -4,6 +4,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		
 		<link rel="stylesheet" href="<?php echo base_url() ?>public/css/estilo.css" type="text/css" />
+		<script type="text/javascript" src="<?php echo base_url(); ?>assets/grocery_crud/texteditor/ckeditor/ckeditor.js"></script>
 		
     </head>
     <body>

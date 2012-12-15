@@ -13,13 +13,13 @@
 </div>
 
 <?php if ($this->session->flashdata('mensagem')) : ?>
-<div id="mensagem" class="mensagem">
+<div id="mensagem" class="aviso">
     <?php echo $this->session->flashdata('mensagem'); ?>
 </div>
 <?php endif; ?>
 
 <?php if ($this->session->flashdata('erro')) : ?>
-<div id="erro" class="mensagem">
+<div id="erro" class="aviso">
     <?php echo $this->session->flashdata('erro'); ?>
 </div>
 <?php endif; ?>
