@@ -9,37 +9,44 @@ a:hover
 }
 
 /* CSS Grocery-Crud */
+#nav{
+    width: 920px;
+    height: 58px;
+    margin: 0 auto;
+    padding-bottom: 0;
+    background-color: pink;
+    
+    
+}
 
 #main_menu{
-    background-color: blue;
+    color: #777;
+    border:none;
+}
+
+.menu{
+    
+    margin: 0;
+    font: 9px Arial, sans-serif;
+}
+
+.menu li {
+    list-style: none; 
+    margin: 0;
     display: inline;
-    width: 920px;
-    height: 20px;
-    margin: 0 auto;
-    
-    
-}
-.item ul li :active {
-    display: inline;
-    border-bottom: 6px solid #26468E;
-    font-weight: bold;
-    font-weight: bold;
-    font-size: 17px;
-    color: #474747;
-    border-right: 1px solid #F9F9F9;
-    height: 22px;
-    width: 110px;
-    padding: 18px 10px;
-    text-align: center;
-}
-    
 
-.item :hover {
-    border-bottom: 6px solid #26468E;
-    
 }
-
-
+.menu li a{
+    height:1px;
+    padding: 3px 1px; 
+    margin:0;
+    border: 1px solid #f00; 
+    background: #999;
+   
+}
+.menu li a: hover{
+   
+}
 body{
     font-family: Arial;
     font-size: 14px;
