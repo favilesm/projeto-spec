@@ -154,8 +154,6 @@ body{
     float: left;
     clear: both;
     display: inline;
-     border-bottom-right-radius: 7px;
-    border-top-right-radius: 7px;
 }
 
 .faixa{
@@ -171,6 +169,8 @@ body{
 .titulo{
     padding: 20px;
     background: #26468E;
+    border-bottom-right-radius: 7px;
+    border-top-right-radius: 7px;
     
 }
 h1{ 
