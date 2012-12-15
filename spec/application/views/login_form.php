@@ -2,7 +2,21 @@
     
     <div id="centro">
         <div class ="borda_top_dente"></div>
-        <div class="faixa"></div>
+        
+        <div class="cabecalho">
+            <div class="centro_faixa">
+                <div class="centro_faixa2">
+                    <div id="espaco_faixa">
+                        <div class="faixa">
+                            <div class="titulo">
+                                <h1>Quem Somos</h1>
+                            </div>            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <div id ="borda_login">
             <div class ="login_form">
                 <h1></h1>
@@ -10,7 +24,7 @@
 					<?php
 						echo form_open('login/validar');?>
 						<div class='label_login'>
-							<label for="login">Login</label>
+							
 						</div>
 						<div class='form_login'>
 							<input type="login" name="login" value="" style="height: 32px;"/>

@@ -18,7 +18,7 @@ foreach($css_files as $file): ?>
 <!-- Beginning header -->
     <div id="nav">
         <div id="main_menu">
-            <ul id="menu">
+            <ul class="menu">
                 <li class="item1"><a href='<?php echo site_url('administrador')?>'>Administradores</a></li>
                 <li class="item2"><a href='<?php echo site_url('administrador/dica')?>'>Dicas</a></li>
                 <li class="item3"><a href='<?php echo site_url('administrador/noticia')?>'>Notícias</a></li>
