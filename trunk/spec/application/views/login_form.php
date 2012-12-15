@@ -9,7 +9,7 @@
                     <div id="espaco_faixa">
                         <div class="faixa">
                             <div class="titulo">
-                                <h1>Quem Somos</h1>
+                                <h1>Login</h1>
                             </div>            
                         </div>
                     </div>
