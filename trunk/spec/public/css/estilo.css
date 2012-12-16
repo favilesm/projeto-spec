@@ -145,8 +145,12 @@ body{
     vertical-align: top;
     text-align: left;
     margin: 0 auto;
-    
 }
+
+div#cabecalho-espaco{
+    height: 123px;
+}
+
 .centro_faixa{
     padding-bottom: 0px;
     padding-left: 0px;
@@ -397,11 +401,6 @@ div.aviso {
     padding: 20px;
 }
 
-div#avisos{
-    width: 920px;
-    margin: 0 auto;
-}
-
 div#erro {
     background: #BE0000;
 }
@@ -422,4 +421,27 @@ div#enviar_mensagem{
 
 div#enviar_mensagem div{
     margin: 10px;
+}
+
+div#grocerycrud {
+    padding: 10px;
+    padding-top: 123px;
+}
+
+div#row-titulo, div#row-texto, div#arquivos {
+    background: #F5F5FF;
+    padding: 10px;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+div#row-titulo{
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+div#arquivos h1{
+    color: black;
+    font-size: 12px;
 }

@@ -1,4 +1,4 @@
-<?php include("_inc/header.php"); ?>    
+<?php include("_inc/header_old.php"); ?>    
     
     <div id="centro">
         <div class ="borda_top_dente"></div>

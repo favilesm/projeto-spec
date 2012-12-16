@@ -1918,7 +1918,7 @@ class grocery_CRUD_Layout extends grocery_CRUD_Model_Driver
 				break;				
 			}
 			
-			$class_name = $ci->config->item('grocery_crud_text_editor_type') == 'minimal' ? 'mini-texteditor' : 'texteditor';
+			$class_name = $ci->config->item('grocery_crud_text_editor_type') == 'minimal' ? 'mini-texteditor' : 'ckeditor';
 			
 			$input = "<textarea id='field-{$field_info->name}' name='{$field_info->name}' class='$class_name' >$value</textarea>";
 		}
