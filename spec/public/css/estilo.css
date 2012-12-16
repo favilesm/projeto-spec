@@ -96,6 +96,7 @@ body{
 #centro{
     position: relative;
     width: 920px;
+    height: auto;
     margin: 0 auto;    
     padding-bottom: 50px;
     
@@ -103,7 +104,7 @@ body{
 }
 .fundo_centro{
     width: 920px;
-       margin: 0 auto;    
+    margin: 0 auto;    
     padding-bottom: 50px;
     background-color: white;
 }
@@ -196,7 +197,7 @@ h1{
     
     text-align:center;
     width: 920px;
-    height: 600px;
+    height: auto;
     margin: auto;
     background-color: white;
 }
@@ -234,7 +235,7 @@ h1{
     height: 94px;
     margin-bottom: 0px;
     margin-top: 50px;
-    
+    padding: 0;
     bottom: 0;
 }
 .info{
@@ -278,7 +279,7 @@ h1{
 }
 .login_invalido{
     width: 920px;
-    height: 120px;
+    height: 300px;
     margin: auto;
     background-color: white;
     
@@ -397,4 +398,10 @@ div#erro {
 
 div#mensagem {
     background: green;
+}
+#text{
+    width: 880px;
+    margin-left: 20px;
+    background-color: brown;
+    
 }
