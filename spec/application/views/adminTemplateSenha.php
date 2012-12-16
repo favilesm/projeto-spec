@@ -3,7 +3,7 @@
 
 </head>
 <body>
-    <div id="site">
+<div id="site">
 <!-- Beginning header -->
     <div id="nav">
         <div id="main_menu">
@@ -50,26 +50,17 @@
             </div>
         </div>    
         <div id="novasenha">
-                <?php echo form_open(current_url()); ?>
+            <?php echo form_open(current_url()); ?>
                 <label for="senha">Nova senha:</label> <input id="senha" type="password" name="senha" />
                 <br />
                 <input type="submit" value="Alterar" />
-                <?php echo form_close(); ?>
-            </div>
+            <?php echo form_close(); ?>
+        </div>
                 
         <div class ="borda_bottom_dente"></div>
     </div>
-
-
-
-
-        
-        
-        
-        
-    
 <!-- Beginning footer -->
-
+</div>
 <!-- End of Footer -->
 </body>
 <!--INICIO FOOTER PERSONALIZADO -->
