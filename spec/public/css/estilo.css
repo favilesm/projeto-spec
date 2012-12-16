@@ -168,9 +168,9 @@ body{
     color: white;
     padding: 6px;
     background: url('ribbonShadow.png') no-repeat left top;
-    background-position-x: 20px;
-    margin-left: -60px;
-    padding-left: 20px;
+  
+    margin-left: -40px;
+    padding-left: 2px;
     margin-bottom: 20px;
    
 }
