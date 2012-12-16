@@ -20,6 +20,8 @@ class PrefeituraModel extends CI_Model {
 		$crud->unset_add();
 		$crud->unset_edit();
 		$crud->unset_delete();
+		$crud->unset_export();
+		$crud->unset_print();
 		
 		$output = $crud->render();
 		return($output);
@@ -73,6 +75,8 @@ class PrefeituraModel extends CI_Model {
 		$crud->unset_add();
 		$crud->unset_edit();
 		$crud->unset_delete();
+		$crud->unset_export();
+		$crud->unset_print();
 		
 		$output = $crud->render();
 		return($output);
@@ -120,6 +124,8 @@ class PrefeituraModel extends CI_Model {
 		$crud->unset_add();
 		$crud->unset_edit();
 		$crud->unset_delete();
+		$crud->unset_export();
+		$crud->unset_print();
 		
 		$output = $crud->render();
 		return($output);
@@ -156,6 +162,8 @@ class PrefeituraModel extends CI_Model {
 		$crud->unset_add();
 		$crud->unset_edit();
 		$crud->unset_delete();
+		$crud->unset_export();
+		$crud->unset_print();
 		
 		$output = $crud->render();
 		return($output);
@@ -197,6 +205,9 @@ class PrefeituraModel extends CI_Model {
 		$crud->unset_edit();
 		
 		$crud->callback_insert(array($this,'getMensagensInsert'));
+		
+		$crud->unset_export();
+		$crud->unset_print();
 		
 		$output = $crud->render();
 		return($output);
