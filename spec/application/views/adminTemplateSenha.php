@@ -26,11 +26,6 @@
     </div>
     <?php endif; ?>
     
-    <?php
-    if(isset($dropdown_setup)) {
-            $this->load->view('dependent_dropdown', $dropdown_setup);
-    }
-    ?>
 <!-- End of header-->
 
     <div id="centro">
