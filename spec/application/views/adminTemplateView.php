@@ -19,14 +19,14 @@ foreach($css_files as $file): ?>
     <div id="nav">
         <div id="main_menu">
             <ul class="menu">
-                <li class="item1"><a href='<?php echo site_url('administrador')?>'>Administradores</a></li>
-                <li class="item2"><a href='<?php echo site_url('administrador/dica')?>'>Dicas</a></li>
-                <li class="item3"><a href='<?php echo site_url('administrador/noticia')?>'>Notícias</a></li>
-                <li class="item4"><a href='<?php echo site_url('administrador/blog')?>'>Blog</a></li>
-                <li class="item5"><a href='<?php echo site_url('administrador/prefeitura')?>'>Prefeitura</a></li>
-                <li class="item6"><a href='<?php echo site_url('administrador/programa')?>'>Programa do governo</a></li>
-                <li class="item7"><a href='<?php echo site_url('administrador/mensagem')?>'>Mensagem a um usuário</a></li>
-                <li class="item8"><a href='<?php echo site_url('login/logout')?>'>Sair</a></li>
+                <li id="item1"><a href='<?php echo site_url('administrador')?>'>Administradores</a></li>
+                <li id="item2"><a href='<?php echo site_url('administrador/dica')?>'>Dicas</a></li>
+                <li id="item3"><a href='<?php echo site_url('administrador/noticia')?>'>Notícias</a></li>
+                <li id="item4"><a href='<?php echo site_url('administrador/blog')?>'>Blog</a></li>
+                <li id="item5"><a href='<?php echo site_url('administrador/prefeitura')?>'>Prefeitura</a></li>
+                <li id="item6"><a href='<?php echo site_url('administrador/programa')?>'>Programa do governo</a></li>
+                <li id="item7"><a href='<?php echo site_url('administrador/mensagem')?>'>Mensagem a um usuário</a></li>
+                <li id="item8"><a href='<?php echo site_url('login/logout')?>'>Sair</a></li>
             </ul>
         </div>
     </div>
