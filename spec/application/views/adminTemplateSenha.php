@@ -13,7 +13,7 @@
                 <li class="item3"><a href='<?php echo site_url('administrador/noticia')?>'>Notícias</a></li>
                 <li class="item4"><a href='<?php echo site_url('administrador/blog')?>'>Blog</a></li>
                 <li class="item5"><a href='<?php echo site_url('administrador/prefeitura')?>'>Prefeitura</a></li>
-                <li class="item6"><a href='<?php echo site_url('administrador/programa')?>'>Programa do governo</a></li>
+                <li class="item6"><a href='<?php echo site_url('administrador/programa')?>'>Programas do governo</a></li>
                 <li class="item7"><a href='<?php echo site_url('administrador/mensagem')?>'>Mensagem a um usuário</a></li>
                 <li class="item8"><a href='<?php echo site_url('login/logout')?>'>Sair</a></li>
             </ul>
@@ -42,7 +42,7 @@
                     <div id="espaco_faixa">
                         <div class="faixa">
                             <div class="titulo">
-                                <h1><?php echo ($tipo == 'admin') ? 'Alterando senha do administrador:' : 'Alterando senha da prefeitura de:'; ?>             <?php echo $nome; ?></h1>
+                                <h1><?php echo (($tipo == 'admin') ? 'Alterando senha do administrador ' : 'Alterando senha da prefeitura de ').$nome; ?></h1>
                             </div>            
                         </div>
                     </div>

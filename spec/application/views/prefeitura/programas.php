@@ -10,7 +10,7 @@
                         <div id="espaco_faixa">
                             <div class="faixa">
                                 <div class="titulo">
-                                    <h1>Programas</h1>
+                                    <h1>Programas do governo</h1>
                                 </div>            
                             </div>
                         </div>
