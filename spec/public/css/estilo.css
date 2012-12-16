@@ -87,10 +87,12 @@ body{
 #site{
     width: 920px;
     margin: 0 auto;
+    padding-bottom: -94px;
 }
 
 #tudo{
     position: relative;
+    height: auto;
     min-height: 100%;    
 }
 #centro{
@@ -229,13 +231,12 @@ h1{
     margin-top: 47px;
 }
 #footer{
-    position:absolute;
+    clear: both;
+    position: relative;
     background-color: #434343;
-    width: 100%;
     height: 94px;
-    margin-bottom: 0px;
-    margin-top: 50px;
-    padding: 0;
+    width: 100%;
+    margin-top: -94px;
     bottom: 0;
 }
 .info{
