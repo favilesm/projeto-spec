@@ -25,7 +25,7 @@ class AdminModel extends CI_Model {
         return($output);
     }
     
-    function crudAdmin($id)
+    function crudAdmin()
     {
         $crud = new grocery_CRUD();
         $crud->set_table('administrador');
@@ -34,7 +34,7 @@ class AdminModel extends CI_Model {
 		$crud->field_type('senha', 'password');
         $crud->required_fields('login', 'senha');
        
-        if ($id == 0)
+        if ($this->session->userdata('id') == 0)
             $crud->add_action('Alterar senha',base_url('/assets/uploads/key.png'),'administrador/adminsenha');
         else
         {

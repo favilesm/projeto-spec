@@ -5,6 +5,10 @@ class Prefeitura extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
+		
+		if ($this->session->userdata('tipousuario') != 'prefeitura')
+			redirect('login');
+		
 		$this->load->model('prefeituramodel');
 	}
 	

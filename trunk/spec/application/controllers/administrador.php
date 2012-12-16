@@ -2,17 +2,25 @@
 
 class Administrador extends CI_Controller {
     
+    function __construct()
+    {
+        parent::__construct();
+        
+        if ($this->session->userdata('tipousuario') != 'admin')
+            redirect('login');
+    }
+    
     function _chamaTemplate($output = null)
     {
         $this->load->view('adminTemplateView.php',$output);    
     }
-        
+    
     function index()
     {
         if (    $this->session->userdata('logado') == true  )
         {
             $this->load->model('adminModel');
-            $output = $this->adminModel->crudAdmin($this->verificaAdmin());
+            $output = $this->adminModel->crudAdmin();
             $this->_chamaTemplate($output);
         }
         else
@@ -215,7 +223,7 @@ class Administrador extends CI_Controller {
         if (    $this->session->userdata('logado') == true  )
         {
             $this->load->model('adminModel');
-            $output = $this->adminModel->crudMensagem($this->verificaAdmin());
+            $output = $this->adminModel->crudMensagem();
 
             /*$this->load->view('_inc/header_open');
             $this->load->view('_inc/header_grocery', $output);
@@ -230,30 +238,6 @@ class Administrador extends CI_Controller {
         {
             redirect('login');
         }
-    }
-    
-    function verificaAdmin()
-    {
-        $this->load->model('usuarioModel');        
-        $tipoDeUsuario = $this->usuarioModel->verificaAdmin();   
-        if(is_object($tipoDeUsuario))
-        {
-            //usuário é admin
-            if( $tipoDeUsuario->administrador_id == 0)
-            {
-                return 0;
-            }
-            else
-            {//admin normal
-                return 1;
-            }
-                    
-        }
-        else
-        {//usuário normal
-           return 2;
-        }
-        
     }
     
     function checaQtdSecretarios($id)
