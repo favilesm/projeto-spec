@@ -26,21 +26,6 @@ class UsuarioModel extends CI_Model {
             return $query->row();
         }   
     }
-    
-    function verificaAdmin()
-    {
-        //deve-se selecionar qual tipo de adimin é 
-        //1 == admin fodão capaz de criar novos admin
-        //2 == admin normal, não possui a função de criar usuári admins
-        $login = $this->session->userdata('login');
-        $this->db->select('administrador_id');
-        $this->db->where('login', $login);
-
-        return $this->db->get('administrador')->row();
-
-    }
-
-    
 }
 
 ?>

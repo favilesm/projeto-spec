@@ -30,7 +30,8 @@ class Login extends CI_Controller{
             $data = array (
                 'id' => $query->prefeitura_id,
                 'login' => $this->input->post('login'),
-                'logado' => true
+                'logado' => true,
+                'tipousuario' => 'prefeitura'
             );
                 
             $this->session->set_userdata($data);
@@ -43,7 +44,8 @@ class Login extends CI_Controller{
                 'id' => $query->administrador_id,
                 'login' => $this->input->post('login'),
                 'inserio' => false,
-                'logado' => true
+                'logado' => true,
+                'tipousuario' => 'admin'
             );
                 
             $this->session->set_userdata($data);
@@ -67,11 +69,7 @@ class Login extends CI_Controller{
     
     function verificaUsuario()
     {
-        $this->load->model('usuariomodel');
-        
-        $tipoDeUsuario = $this->usuariomodel->verificaAdmin();   
-    
-        if(is_object($tipoDeUsuario))
+        if($this->session->userdata('tipousuario') == 'admin')
         {
             redirect('administrador');
         }
@@ -79,7 +77,6 @@ class Login extends CI_Controller{
         {
             redirect('prefeitura');
         }
-    
     }
     
 }

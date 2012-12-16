@@ -414,3 +414,11 @@ div#mensagem {
     background-color: brown;
     
 }
+
+div#enviar_mensagem{
+    padding: 20px;
+}
+
+div#enviar_mensagem div{
+    margin: 10px;
+}
