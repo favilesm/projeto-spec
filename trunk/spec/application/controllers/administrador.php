@@ -21,6 +21,7 @@ class Administrador extends CI_Controller {
         {
             $this->load->model('adminModel');
             $output = $this->adminModel->crudAdmin();
+            $output->titulo = 'Administradores';
             $this->_chamaTemplate($output);
         }
         else
@@ -60,6 +61,7 @@ class Administrador extends CI_Controller {
         {
             $this->load->model('adminModel');
             $output = $this->adminModel->crudDica();
+            $output->titulo = 'Dicas';
             $this->_chamaTemplate($output);
         }
         else
@@ -74,6 +76,7 @@ class Administrador extends CI_Controller {
         {
             $this->load->model('adminModel');
             $output = $this->adminModel->crudPrograma();
+            $output->titulo = 'Programas do governo';
             $this->_chamaTemplate($output);
         }
         else
@@ -88,6 +91,7 @@ class Administrador extends CI_Controller {
         {
             $this->load->model('adminModel');
             $output = $this->adminModel->crudNoticia();
+            $output->titulo = 'Notícias';
             $this->_chamaTemplate($output);
         }
         else
@@ -102,6 +106,7 @@ class Administrador extends CI_Controller {
         {
             $this->load->model('adminModel');
             $output = $this->adminModel->crudNoticiaAnexo($noticia_id);
+            $output->titulo = 'Anexos da notícia '.$this->adminModel->getNomeNoticia($noticia_id);
             $this->_chamaTemplate($output);
         }
         else
@@ -116,6 +121,7 @@ class Administrador extends CI_Controller {
         {
             $this->load->model('adminModel');
             $output = $this->adminModel->crudBlog();
+            $output->titulo = 'Blog';
             $this->_chamaTemplate($output);
         }
         else
@@ -130,7 +136,7 @@ class Administrador extends CI_Controller {
         {
             $this->load->model('adminModel');
             $output = $this->adminModel->crudPrefeitura();
-            //if( $this->session->userdata('erro' ) $output['erro'] = 'insert';
+            $output->titulo = 'Prefeituras';
             $this->_chamaTemplate($output);
         }
         else
@@ -167,6 +173,7 @@ class Administrador extends CI_Controller {
         {
             $this->load->model('adminModel');
             $output = $this->adminModel->crudSecretario($id);
+            $output->titulo = 'Secretários da prefeitura de '.$this->adminModel->getNomePrefeitura($id);
             $this->_chamaTemplate($output);
         }
         else
@@ -181,6 +188,7 @@ class Administrador extends CI_Controller {
         {
             $this->load->model('adminModel');
             $output = $this->adminModel->crudTelefone($id);
+            $output->titulo = 'Telefones da prefeitura de '.$this->adminModel->getNomePrefeitura($id);
             $this->_chamaTemplate($output); 
         }
         else
@@ -195,7 +203,7 @@ class Administrador extends CI_Controller {
         {
             $this->load->model('adminModel');
             $output = $this->adminModel->ativarPrefeitura($id);
-             redirect('/administrador/prefeitura');
+             redirect('administrador/prefeitura');
             //$this->_chamaTemplate($output);
         }
         else
@@ -210,6 +218,7 @@ class Administrador extends CI_Controller {
         {
             $this->load->model('adminModel');
             $output = $this->adminModel->crudPrefeito($id);
+            $output->titulo = 'Prefeito de '.$this->adminModel->getNomePrefeitura($id);
             $this->_chamaTemplate($output);
         }
         else
@@ -224,14 +233,7 @@ class Administrador extends CI_Controller {
         {
             $this->load->model('adminModel');
             $output = $this->adminModel->crudMensagem();
-
-            /*$this->load->view('_inc/header_open');
-            $this->load->view('_inc/header_grocery', $output);
-            $this->load->view('_inc/header');
-            $this->load->view('_inc/header_close');
-            $this->load->view('admin/top');
-            $this->load->view('_inc/grocery', $output);
-            $this->load->view('_inc/footer');*/
+            $output->titulo = 'Mensagens';
 			$this->_chamaTemplate($output);
         }
         else

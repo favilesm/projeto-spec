@@ -184,7 +184,7 @@ class AdminModel extends CI_Model {
         $crud->set_table('secretario');
         $crud->set_subject(
             'Secretário da prefeitura de '.
-            $this->db->get_where('prefeitura', array('prefeitura_id' => $id))->row()->municipio
+            $this->db->get_where('prefeitura', array('prefeitura_id' => $id))->row()->ufmunicipio
         );
         $crud->columns('nome_secretario', 'email_secretario', 'funcao');
         $crud->fields('nome_secretario', 'email_secretario', 'funcao');
@@ -243,7 +243,7 @@ class AdminModel extends CI_Model {
         $crud->set_table('telefone');
         $crud->set_subject(
             'Telefone da prefeitura de '.
-            $this->db->get_where('prefeitura', array('prefeitura_id' => $id))->row()->municipio
+            $this->db->get_where('prefeitura', array('prefeitura_id' => $id))->row()->ufmunicipio
         );
         $crud->columns('telefone');
         $crud->fields('telefone');
@@ -267,7 +267,7 @@ class AdminModel extends CI_Model {
         $crud->set_table('prefeito');
         $crud->set_subject(
             'Prefeito de '.
-            $this->db->get_where('prefeitura', array('prefeitura_id' => $id))->row()->municipio
+            $this->db->get_where('prefeitura', array('prefeitura_id' => $id))->row()->ufmunicipio
         );
         $crud->columns('nome_prefeito', 'celular', 'cpf', 'data_nascimento', 'email_prefeito');
         $crud->fields('nome_prefeito', 'celular', 'cpf', 'data_nascimento', 'email_prefeito');
@@ -348,7 +348,7 @@ class AdminModel extends CI_Model {
         $crud = new grocery_CRUD();
         
         $crud->set_table('arquivos');
-        $crud->set_subject('Arquivo da notícia '.$this->db->get('noticia')->row()->titulo_noticia);
+        $crud->set_subject('Anexo da notícia '.$this->db->get('noticia')->row()->titulo_noticia);
         
         $crud->columns('arquivo');
         $crud->fields('arquivo');
@@ -380,6 +380,14 @@ class AdminModel extends CI_Model {
             $this->db->get_where('arquivos', array('arquivos_id' => $primary_key))->row()->arquivo
         );
         return true;
+    }
+    
+    function getNomeNoticia($noticia_id)
+    {
+        return $this->db->get_where(
+            'noticia',
+            array('noticia_id' => $noticia_id)
+        )->row()->titulo_noticia;
     }
     
     function crudPrograma()

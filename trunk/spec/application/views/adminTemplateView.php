@@ -37,30 +37,31 @@ foreach($css_files as $file): ?>
     </div>
     <?php endif; ?>
     
-    <?php
-    if(isset($dropdown_setup)) {
-            $this->load->view('dependent_dropdown', $dropdown_setup);
-    }
-    ?>
-<!-- End of header-->
-
-    <div style='height:20px;'></div>  
-    <div>
-        <?php 
-  
-        if (isset($erro))
-        {
-            echo "ERRO AO INSERIR!!!.";
-        }
-        else
-        {
-            echo $output; 
-        }
- 
-        ?>
- 
+    <div class ="borda_top_dente"></div>
+        <div class="fundo_centro">
+            <div class="cabecalho">
+                <div class="centro_faixa">
+                    <div class="centro_faixa2">
+                        <div id="espaco_faixa">
+                            <div class="faixa">
+                                <div class="titulo">
+                                    <h1><?php echo $titulo; ?></h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+    <div id="grocerycrud">
+        <?php echo $output; ?>
     </div>
-    <div style='height:130px;'></div>
+    
+    
+    </div><!-- end class fundo_centro -->
+    <div class ="borda_bottom_dente"></div>
+    <div style='height:50px;'></div>
+
 </div>
 <!-- Beginning footer -->
 
