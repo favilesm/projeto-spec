@@ -23,6 +23,9 @@ class AdminModel extends CI_Model {
         
         $crud->order_by('dica_id', 'desc');
         
+        $crud->unset_export();
+        $crud->unset_print();
+        
         $output = $crud->render();
         return($output);
     }
@@ -49,6 +52,9 @@ class AdminModel extends CI_Model {
         
         $crud->callback_before_insert(array($this,'crudAdminBeforeInsert'));
         $crud->callback_before_delete(array($this, 'crudAdminBeforeDelete'));
+        
+        $crud->unset_export();
+        $crud->unset_print();
         
         $output = $crud->render();
         return($output);
@@ -92,6 +98,9 @@ class AdminModel extends CI_Model {
 
         $crud->order_by('blog_id', 'desc');
         
+        $crud->unset_export();
+        $crud->unset_print();
+        
         $output = $crud->render();
         return($output);
     }
@@ -134,6 +143,9 @@ class AdminModel extends CI_Model {
         
         $crud->callback_after_insert(array($this,'crudPrefeituraAfterInsert'));
         $crud->callback_after_update(array($this,'crudPrefeituraAfterInsert'));
+        
+        $crud->unset_export();
+        $crud->unset_print();
 		
         $output = $crud->render();
         return($output);
@@ -198,6 +210,9 @@ class AdminModel extends CI_Model {
         $crud->callback_insert(array($this,'crudSecretarioInsert'));
         $crud->callback_after_delete(array($this,'crudSecretarioAfterDelete'));
         
+        $crud->unset_export();
+        $crud->unset_print();
+        
         $output = $crud->render();
         return($output);
     }    
@@ -249,7 +264,11 @@ class AdminModel extends CI_Model {
         $crud->fields('telefone');
         $crud->required_fields('telefone');
         $crud->callback_insert(array($this,'crudTelefoneInsert'));
-         $crud->where('prefeitura_prefeitura_id', $id);
+        $crud->where('prefeitura_prefeitura_id', $id);
+        
+        $crud->unset_export();
+        $crud->unset_print();
+        
         $output = $crud->render();
         return($output);
     }
@@ -279,6 +298,9 @@ class AdminModel extends CI_Model {
         $crud->display_as('cpf', 'CPF');
         $crud->display_as('data_nascimento', 'Data de nascimento');
         $crud->display_as('email_prefeito', 'E-mail');
+        
+        $crud->unset_export();
+        $crud->unset_print();
         
         $output = $crud->render();
         return($output);
@@ -322,6 +344,9 @@ class AdminModel extends CI_Model {
         
         $crud->order_by('noticia_id', 'desc');
         
+        $crud->unset_export();
+        $crud->unset_print();
+        
         $output = $crud->render();
         return($output);
     }    
@@ -363,6 +388,9 @@ class AdminModel extends CI_Model {
         $crud->callback_insert(array($this, 'crudNoticiaAnexoInsert'));
         $crud->callback_before_delete(array($this, 'crudNoticiaAnexoBeforeDelete'));
         
+        $crud->unset_export();
+        $crud->unset_print();
+        
         $output = $crud->render();
         return($output);
     }
@@ -403,6 +431,9 @@ class AdminModel extends CI_Model {
         
         $crud->order_by('programa_id', 'desc');
         
+        $crud->unset_export();
+        $crud->unset_print();
+        
         $output = $crud->render();
         return($output);
     }
@@ -435,6 +466,9 @@ class AdminModel extends CI_Model {
         $crud->order_by('mensagem_id', 'desc');
         
         $crud->callback_insert(array($this, 'crudMensagemInsert'));
+        
+        $crud->unset_export();
+        $crud->unset_print();
 
         $output = $crud->render();
         return($output);
