@@ -21,13 +21,36 @@ class Prefeitura extends CI_Controller {
 	{
 		if (    $this->session->userdata('logado') == true  )
 		{
-			$noticias = $this->prefeituramodel->getNoticias();
+			$output = $this->prefeituramodel->getNoticias();
+			
+			$this->load->view('_inc/header_open');
+			$this->load->view('_inc/header_grocery', $output);
+			$this->load->view('_inc/header');
+			$this->load->view('_inc/header_close');
+			$this->load->view('prefeitura/top', array('titulo' => 'Notícias'));
+			$this->load->view('_inc/grocery', $output);
+			$this->load->view('prefeitura/bottom');
+			$this->load->view('_inc/footer');
+		}
+		else
+		{
+			redirect('login');
+		}
+	}
 	
+	function noticiarow($noticia_id)
+	{
+		if (    $this->session->userdata('logado') == true  )
+		{
+			$row = $this->prefeituramodel->getNoticia($noticia_id);
+			
 			$this->load->view('_inc/header_open');
 			$this->load->view('_inc/header');
 			$this->load->view('_inc/header_close');
-			$this->load->view('prefeitura/top');
-			$this->load->view('prefeitura/noticias', $noticias);
+			$this->load->view('prefeitura/top', array('titulo' => 'Notícia'));
+			$this->load->view('prefeitura/row', $row);
+			$this->load->view('prefeitura/noticia_arquivos', $row);
+			$this->load->view('prefeitura/bottom');
 			$this->load->view('_inc/footer');
 		}
 		else
@@ -40,13 +63,35 @@ class Prefeitura extends CI_Controller {
 	{
 		if (    $this->session->userdata('logado') == true  )
 		{
-			$dicas = $this->prefeituramodel->getDicas();
+			$output = $this->prefeituramodel->getDicas();
+			
+			$this->load->view('_inc/header_open');
+			$this->load->view('_inc/header_grocery', $output);
+			$this->load->view('_inc/header');
+			$this->load->view('_inc/header_close');
+			$this->load->view('prefeitura/top', array('titulo' => 'Dicas'));
+			$this->load->view('_inc/grocery', $output);
+			$this->load->view('prefeitura/bottom');
+			$this->load->view('_inc/footer');
+		}
+		else
+		{
+			redirect('login');
+		}
+	}
+	
+	function dicarow($dica_id)
+	{
+		if (    $this->session->userdata('logado') == true  )
+		{
+			$row = $this->prefeituramodel->getDica($dica_id);
 			
 			$this->load->view('_inc/header_open');
 			$this->load->view('_inc/header');
 			$this->load->view('_inc/header_close');
-			$this->load->view('prefeitura/top');
-			$this->load->view('prefeitura/dicas', $dicas);
+			$this->load->view('prefeitura/top', array('titulo' => 'Dica'));
+			$this->load->view('prefeitura/row', $row);
+			$this->load->view('prefeitura/bottom');
 			$this->load->view('_inc/footer');
 		}
 		else
@@ -59,13 +104,35 @@ class Prefeitura extends CI_Controller {
 	{
 		if (    $this->session->userdata('logado') == true  )
 		{
-			$programas = $this->prefeituramodel->getProgramas();
+			$output = $this->prefeituramodel->getProgramas();
+			
+			$this->load->view('_inc/header_open');
+			$this->load->view('_inc/header_grocery', $output);
+			$this->load->view('_inc/header');
+			$this->load->view('_inc/header_close');
+			$this->load->view('prefeitura/top', array('titulo' => 'Programas do governo'));
+			$this->load->view('_inc/grocery', $output);
+			$this->load->view('prefeitura/bottom');
+			$this->load->view('_inc/footer');
+		}
+		else
+		{
+			redirect('login');
+		}
+	}
+	
+	function programarow($programa_id)
+	{
+		if (    $this->session->userdata('logado') == true  )
+		{
+			$row = $this->prefeituramodel->getPrograma($programa_id);
 			
 			$this->load->view('_inc/header_open');
 			$this->load->view('_inc/header');
 			$this->load->view('_inc/header_close');
-			$this->load->view('prefeitura/top');
-			$this->load->view('prefeitura/programas', $programas);
+			$this->load->view('prefeitura/top', array('titulo' => 'Programa do governo'));
+			$this->load->view('prefeitura/row', $row);
+			$this->load->view('prefeitura/bottom');
 			$this->load->view('_inc/footer');
 		}
 		else
@@ -78,13 +145,35 @@ class Prefeitura extends CI_Controller {
 	{
 		if (    $this->session->userdata('logado') == true  )
 		{
-			$blog = $this->prefeituramodel->getBlog();
+			$output = $this->prefeituramodel->getPosts();
+			
+			$this->load->view('_inc/header_open');
+			$this->load->view('_inc/header_grocery', $output);
+			$this->load->view('_inc/header');
+			$this->load->view('_inc/header_close');
+			$this->load->view('prefeitura/top', array('titulo' => 'Blog'));
+			$this->load->view('_inc/grocery', $output);
+			$this->load->view('prefeitura/bottom');
+			$this->load->view('_inc/footer');
+		}
+		else
+		{
+			redirect('login');
+		}
+	}
+	
+	function postrow($post_id)
+	{
+		if (    $this->session->userdata('logado') == true  )
+		{
+			$row = $this->prefeituramodel->getPost($post_id);
 			
 			$this->load->view('_inc/header_open');
 			$this->load->view('_inc/header');
 			$this->load->view('_inc/header_close');
-			$this->load->view('prefeitura/top');
-			$this->load->view('prefeitura/blog', $blog);
+			$this->load->view('prefeitura/top', array('titulo' => 'Post'));
+			$this->load->view('prefeitura/row', $row);
+			$this->load->view('prefeitura/bottom');
 			$this->load->view('_inc/footer');
 		}
 		else
@@ -97,13 +186,15 @@ class Prefeitura extends CI_Controller {
 	{
 		if (    $this->session->userdata('logado') == true  )
 		{
-			$mensagens = $this->prefeituramodel->getMensagens();
+			$output = $this->prefeituramodel->getMensagens();
 			
 			$this->load->view('_inc/header_open');
+			$this->load->view('_inc/header_grocery', $output);
 			$this->load->view('_inc/header');
 			$this->load->view('_inc/header_close');
-			$this->load->view('prefeitura/top');
-			$this->load->view('prefeitura/mensagens', $mensagens);
+			$this->load->view('prefeitura/top', array('titulo' => 'Mensagens'));
+			$this->load->view('_inc/grocery', $output);
+			$this->load->view('prefeitura/bottom');
 			$this->load->view('_inc/footer');
 		}
 		else
@@ -112,21 +203,18 @@ class Prefeitura extends CI_Controller {
 		}
 	}
 	
-	function enviarmensagem()
+	function mensagemrow($mensagem_id)
 	{
 		if (    $this->session->userdata('logado') == true  )
 		{
-			if (count($_POST)) {
-				$this->prefeituramodel->enviarMensagem($_POST);
-				$this->session->set_flashdata('mensagem', 'Mensagem enviada com sucesso!');
-				redirect('prefeitura/mensagem');
-			}
+			$row = $this->prefeituramodel->getMensagem($mensagem_id);
 			
 			$this->load->view('_inc/header_open');
 			$this->load->view('_inc/header');
 			$this->load->view('_inc/header_close');
-			$this->load->view('prefeitura/top');
-			$this->load->view('prefeitura/enviar_mensagem');
+			$this->load->view('prefeitura/top', array('titulo' => 'Mensagem'));
+			$this->load->view('prefeitura/row', $row);
+			$this->load->view('prefeitura/bottom');
 			$this->load->view('_inc/footer');
 		}
 		else
@@ -157,8 +245,9 @@ class Prefeitura extends CI_Controller {
 			$this->load->view('_inc/header_open');
 			$this->load->view('_inc/header');
 			$this->load->view('_inc/header_close');
-			$this->load->view('prefeitura/top');
+			$this->load->view('prefeitura/top', array('titulo' => 'Alterar senha'));
 			$this->load->view('prefeitura/alterar_senha');
+			$this->load->view('prefeitura/bottom');
 			$this->load->view('_inc/footer');
 		}
 		else

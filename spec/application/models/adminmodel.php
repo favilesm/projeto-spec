@@ -21,6 +21,8 @@ class AdminModel extends CI_Model {
         $crud->display_as('titulo_dica','Título');
         $crud->display_as('texto_dica','Texto');
         
+        $crud->order_by('dica_id', 'desc');
+        
         $output = $crud->render();
         return($output);
     }
@@ -88,6 +90,8 @@ class AdminModel extends CI_Model {
         $crud->display_as('titulo_blog','Título')
              ->display_as('texto_blog','Texto');
 
+        $crud->order_by('blog_id', 'desc');
+        
         $output = $crud->render();
         return($output);
     }
@@ -316,6 +320,8 @@ class AdminModel extends CI_Model {
         
         $crud->callback_before_delete(array($this, 'crudNoticiaBeforeDelete'));
         
+        $crud->order_by('noticia_id', 'desc');
+        
         $output = $crud->render();
         return($output);
     }    
@@ -387,6 +393,8 @@ class AdminModel extends CI_Model {
         $crud->display_as('titulo_programa','Título');
         $crud->display_as('texto_programa','Texto');
         
+        $crud->order_by('programa_id', 'desc');
+        
         $output = $crud->render();
         return($output);
     }
@@ -407,8 +415,8 @@ class AdminModel extends CI_Model {
         
         $crud->display_as('titulo_mensagem','Título');
         $crud->display_as('texto_mensagem','Texto');
-        $crud->display_as('prefeitura_prefeitura_id','Destinatário');
-        $crud->display_as('administrador_administrador_id','Remetente');
+        $crud->display_as('prefeitura_prefeitura_id','Prefeitura');
+        $crud->display_as('administrador_administrador_id','Administrador');
         
         // impede administradores normais de ver a coluna de remetente
         if ($this->session->userdata('id') != 0) {
