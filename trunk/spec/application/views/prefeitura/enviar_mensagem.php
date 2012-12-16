@@ -10,7 +10,7 @@
                         <div id="espaco_faixa">
                             <div class="faixa">
                                 <div class="titulo">
-                                    <h1>Enviar Mensagem</h1>
+                                    <h1>Enviar mensagem</h1>
                                 </div>            
                             </div>
                         </div>

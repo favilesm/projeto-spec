@@ -142,7 +142,7 @@ class Prefeitura extends CI_Controller {
 				}
 				else if ($this->prefeituramodel->alteraSenha($_POST)) {
 					$this->session->set_flashdata('mensagem', 'Senha alterada com sucesso!');
-					redirect('prefeitura');
+					redirect('prefeitura/noticia');
 				}
 				else {
 					$this->session->set_flashdata('erro', 'Senhas não conferem!');

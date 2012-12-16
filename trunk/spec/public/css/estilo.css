@@ -40,7 +40,7 @@
 
 .menu li a{
     font-weight: bold;
-    font-size: 17px;
+    font-size: 16px;
     color: #474747;
     border-right: 1px solid #F9F9F9;
     height: 22px;
@@ -54,7 +54,7 @@
 
 .menu li a:active{
     font-weight: bold;
-    font-size: 17px;
+    font-size: 16px;
     color: #474747;
     border-right: 1px solid #F9F9F9;
     height: 22px;
@@ -394,6 +394,11 @@ div.aviso {
     text-align: center;
     color: white;
     padding: 20px;
+}
+
+div#avisos{
+    width: 920px;
+    margin: 0 auto;
 }
 
 div#erro {
