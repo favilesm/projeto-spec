@@ -112,6 +112,7 @@ body{
     margin: 0 auto;    
     padding-bottom: 50px;
     background-color: white;
+    min-height: 100px;
 }
 
 .borda_top_dente{
