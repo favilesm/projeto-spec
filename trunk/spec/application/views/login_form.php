@@ -9,7 +9,7 @@
                     <div id="espaco_faixa">
                         <div class="faixa">
                             <div class="titulo">
-                                <h1>Sistema SPEC</h1>
+                                <h1>Sistema Consult Online Programas e Projetos</h1>
                             </div>            
                         </div>
                     </div>
